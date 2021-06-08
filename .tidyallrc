@@ -1,0 +1,5 @@
+[PerlTidy]
+select = lib/**/*.{pl,pm,t}
+select = script/**/*.{pl,pm,t}
+select = t/**/*.{pl,pm,t}
+argv = -pro=./.perltidyrc --character-encoding=none
