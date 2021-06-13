@@ -5,7 +5,6 @@ use Mojo::Base 'Mojolicious';
 use Mojo::Pg;
 use Schema;
 use BtcPaywall::Component::MasterKey;
-use Module::Auth::Dispatcher::Auth;
 
 # This method will run once at server start
 sub startup ($self)

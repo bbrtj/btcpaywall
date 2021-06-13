@@ -23,29 +23,3 @@ CREATE TABLE goals (
 
 DROP TABLE goals;
 DROP TABLE accounts;
-
--- 2 up
-
-CREATE TABLE requests (
-	id uuid primary key,
-	status INT NOT NULL DEFAULT 1,
-	ts TIMESTAMP NOT NULL
-);
-
-CREATE TABLE actions (
-	id uuid primary key,
-	request_id uuid,
-	type VARCHAR(64) NOT NULL,
-	data json,
-	CONSTRAINT fk_request_id
-		FOREIGN KEY(request_id)
-		REFERENCES requests(id)
-);
-
-CREATE INDEX ind_actions_lookup ON actions (request_id);
-
--- 2 down
-
-DROP TABLE actions;
-DROP TABLE requests;
-
