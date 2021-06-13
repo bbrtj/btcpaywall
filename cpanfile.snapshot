@@ -61,46 +61,46 @@ DISTRIBUTIONS
       perl 5.010001
       strict 0
       warnings 0
-  Bitcoin-Crypto-0.996
-    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-0.996.tar.gz
+  Bitcoin-Crypto-0.997
+    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-0.997.tar.gz
     provides:
-      Bitcoin::Crypto 0.996
-      Bitcoin::Crypto::Base58 0.996
-      Bitcoin::Crypto::Bech32 0.996
-      Bitcoin::Crypto::Config 0.996
-      Bitcoin::Crypto::Exception 0.996
-      Bitcoin::Crypto::Exception::Base58InputChecksum 0.996
-      Bitcoin::Crypto::Exception::Base58InputFormat 0.996
-      Bitcoin::Crypto::Exception::Bech32InputChecksum 0.996
-      Bitcoin::Crypto::Exception::Bech32InputData 0.996
-      Bitcoin::Crypto::Exception::Bech32InputFormat 0.996
-      Bitcoin::Crypto::Exception::KeyCreate 0.996
-      Bitcoin::Crypto::Exception::KeyDerive 0.996
-      Bitcoin::Crypto::Exception::KeySign 0.996
-      Bitcoin::Crypto::Exception::MnemonicCheck 0.996
-      Bitcoin::Crypto::Exception::MnemonicGenerate 0.996
-      Bitcoin::Crypto::Exception::NetworkConfig 0.996
-      Bitcoin::Crypto::Exception::ScriptOpcode 0.996
-      Bitcoin::Crypto::Exception::ScriptPush 0.996
-      Bitcoin::Crypto::Exception::SegwitProgram 0.996
-      Bitcoin::Crypto::Exception::Sign 0.996
-      Bitcoin::Crypto::Exception::ValidationTest 0.996
-      Bitcoin::Crypto::Exception::Verify 0.996
-      Bitcoin::Crypto::Helpers 0.996
-      Bitcoin::Crypto::Key::ExtPrivate 0.996
-      Bitcoin::Crypto::Key::ExtPublic 0.996
-      Bitcoin::Crypto::Key::Private 0.996
-      Bitcoin::Crypto::Key::Public 0.996
-      Bitcoin::Crypto::Network 0.996
-      Bitcoin::Crypto::Role::BasicKey 0.996
-      Bitcoin::Crypto::Role::Compressed 0.996
-      Bitcoin::Crypto::Role::ExtendedKey 0.996
-      Bitcoin::Crypto::Role::Key 0.996
-      Bitcoin::Crypto::Role::Network 0.996
-      Bitcoin::Crypto::Script 0.996
-      Bitcoin::Crypto::Segwit 0.996
-      Bitcoin::Crypto::Types 0.996
-      Bitcoin::Crypto::Util 0.996
+      Bitcoin::Crypto 0.997
+      Bitcoin::Crypto::BIP44 0.997
+      Bitcoin::Crypto::Base58 0.997
+      Bitcoin::Crypto::Bech32 0.997
+      Bitcoin::Crypto::Config 0.997
+      Bitcoin::Crypto::Exception 0.997
+      Bitcoin::Crypto::Exception::Base58InputChecksum 0.997
+      Bitcoin::Crypto::Exception::Base58InputFormat 0.997
+      Bitcoin::Crypto::Exception::Bech32InputChecksum 0.997
+      Bitcoin::Crypto::Exception::Bech32InputData 0.997
+      Bitcoin::Crypto::Exception::Bech32InputFormat 0.997
+      Bitcoin::Crypto::Exception::KeyCreate 0.997
+      Bitcoin::Crypto::Exception::KeyDerive 0.997
+      Bitcoin::Crypto::Exception::MnemonicCheck 0.997
+      Bitcoin::Crypto::Exception::MnemonicGenerate 0.997
+      Bitcoin::Crypto::Exception::NetworkConfig 0.997
+      Bitcoin::Crypto::Exception::ScriptOpcode 0.997
+      Bitcoin::Crypto::Exception::ScriptPush 0.997
+      Bitcoin::Crypto::Exception::SegwitProgram 0.997
+      Bitcoin::Crypto::Exception::Sign 0.997
+      Bitcoin::Crypto::Exception::ValidationTest 0.997
+      Bitcoin::Crypto::Exception::Verify 0.997
+      Bitcoin::Crypto::Helpers 0.997
+      Bitcoin::Crypto::Key::ExtPrivate 0.997
+      Bitcoin::Crypto::Key::ExtPublic 0.997
+      Bitcoin::Crypto::Key::Private 0.997
+      Bitcoin::Crypto::Key::Public 0.997
+      Bitcoin::Crypto::Network 0.997
+      Bitcoin::Crypto::Role::BasicKey 0.997
+      Bitcoin::Crypto::Role::Compressed 0.997
+      Bitcoin::Crypto::Role::ExtendedKey 0.997
+      Bitcoin::Crypto::Role::Key 0.997
+      Bitcoin::Crypto::Role::Network 0.997
+      Bitcoin::Crypto::Script 0.997
+      Bitcoin::Crypto::Segwit 0.997
+      Bitcoin::Crypto::Types 0.997
+      Bitcoin::Crypto::Util 0.997
     requirements:
       Bitcoin::BIP39 0.002
       CryptX 0.062
