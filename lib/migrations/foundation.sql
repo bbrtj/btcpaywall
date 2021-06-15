@@ -1,25 +1,16 @@
 -- 1 up
 
-CREATE TABLE accounts (
+CREATE TABLE requests (
 	id uuid primary key,
-	acc_key VARCHAR(255) NOT NULL,
-	ver_key VARCHAR(255) NOT NULL,
-	ver_key_number INT NOT NULL
+	amount INT NOT NULL,
+	derivation_index INT NOT NULL,
+	status INT NOT NULL DEFAULT 1,
+	ts TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE goals (
-	id uuid primary key,
-	account_id uuid,
-	hrid VARCHAR(64),
-	key_number INT,
-	title TEXT,
-	content TEXT,
-	CONSTRAINT fk_account_id
-		FOREIGN KEY(account_id)
-		REFERENCES accounts(id)
-);
+CREATE UNIQUE INDEX uniq_requests_derivation_index ON requests (derivation_index);
+CREATE INDEX ind_requests_status ON requests (status);
 
 -- 1 down
 
-DROP TABLE goals;
-DROP TABLE accounts;
+DROP TABLE requests;
