@@ -46,6 +46,57 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  Beam-Emitter-1.007
+    pathname: P/PR/PREACTION/Beam-Emitter-1.007.tar.gz
+    provides:
+      Beam::Emitter 1.007
+      Beam::Event 1.007
+      Beam::Listener 1.007
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0
+      Moo 0
+      Scalar::Util 0
+      Types::Standard 0.008
+      strict 0
+      warnings 0
+  Beam-Service-0.001
+    pathname: P/PR/PREACTION/Beam-Service-0.001.tar.gz
+    provides:
+      Beam::Service 0.001
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 2.002004
+      Types::Standard 0
+      perl 5.008
+  Beam-Wire-1.024
+    pathname: P/PR/PREACTION/Beam-Wire-1.024.tar.gz
+    provides:
+      Beam::Wire 1.024
+      Beam::Wire::Event::BuildService 1.024
+      Beam::Wire::Event::ConfigService 1.024
+      Beam::Wire::Exception 1.024
+      Beam::Wire::Exception::Config 1.024
+      Beam::Wire::Exception::Constructor 1.024
+      Beam::Wire::Exception::InvalidConfig 1.024
+      Beam::Wire::Exception::NotFound 1.024
+      Beam::Wire::Exception::Service 1.024
+    requirements:
+      Beam::Emitter 0
+      Beam::Service 0
+      CPAN::Meta::Requirements 2.120620
+      Config::Any 0.23
+      Data::DPath 0.51
+      ExtUtils::MakeMaker 0
+      Module::Metadata 0
+      Module::Runtime 0
+      Moo 0
+      Path::Tiny 0.055
+      Throwable 0
+      Types::Standard 0
+      YAML 0
+      perl 5.010
   Bitcoin-BIP39-0.003
     pathname: P/PE/PERLANCAR/Bitcoin-BIP39-0.003.tar.gz
     provides:
@@ -678,6 +729,34 @@ DISTRIBUTIONS
       Try::Tiny 0.07
       namespace::clean 0.24
       perl 5.008001
+  Data-DPath-0.58
+    pathname: S/SC/SCHWIGON/Data-DPath-0.58.tar.gz
+    provides:
+      Data::DPath 0.58
+      Data::DPath::Attrs 0.58
+      Data::DPath::Context 0.58
+      Data::DPath::Filters 0.58
+      Data::DPath::Path 0.58
+      Data::DPath::Point 0.58
+      Data::DPath::Step 0.58
+    requirements:
+      Class::XSAccessor 0
+      Class::XSAccessor::Array 0
+      Data::Dumper 0
+      ExtUtils::MakeMaker 0
+      Iterator::Util 0
+      List::Util 1.45
+      POSIX 0
+      Safe 2.30
+      Scalar::Util 0
+      Sub::Exporter 0
+      Text::Balanced 2.02
+      aliased 0.33
+      constant 0
+      if 0
+      perl 5.008
+      strict 0
+      warnings 0
   Data-Dumper-Concise-2.023
     pathname: E/ET/ETHER/Data-Dumper-Concise-2.023.tar.gz
     provides:
@@ -1441,6 +1520,23 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Iterator-0.03
+    pathname: R/RO/ROODE/Iterator-0.03.tar.gz
+    provides:
+      Iterator 0.03
+    requirements:
+      Exception::Class 1.21
+      ExtUtils::MakeMaker 0
+      Test::Simple 0.40
+  Iterator-Util-0.02
+    pathname: R/RO/ROODE/Iterator-Util-0.02.tar.gz
+    provides:
+      Iterator::Util 0.02
+    requirements:
+      Exception::Class 1.21
+      ExtUtils::MakeMaker 0
+      Iterator 0.01
+      Test::Simple 0.40
   MRO-Compat-0.13
     pathname: H/HA/HAARG/MRO-Compat-0.13.tar.gz
     provides:
@@ -2334,6 +2430,32 @@ DISTRIBUTIONS
       overload 0
       parent 0
       strict 0
+  Path-Tiny-0.118
+    pathname: D/DA/DAGOLDEN/Path-Tiny-0.118.tar.gz
+    provides:
+      Path::Tiny 0.118
+      Path::Tiny::Error 0.118
+    requirements:
+      Carp 0
+      Cwd 0
+      Digest 1.03
+      Digest::SHA 5.45
+      Encode 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      File::Copy 0
+      File::Glob 0
+      File::Path 2.07
+      File::Spec 0.86
+      File::Temp 0.19
+      File::stat 0
+      constant 0
+      overload 0
+      perl 5.008001
+      strict 0
+      warnings 0
+      warnings::register 0
   Role-Tiny-2.002004
     pathname: H/HA/HAARG/Role-Tiny-2.002004.tar.gz
     provides:
@@ -2684,6 +2806,22 @@ DISTRIBUTIONS
       Test::Builder 0.13
       Test::Builder::Tester 1.02
       perl 5.006
+  Throwable-0.200013
+    pathname: R/RJ/RJBS/Throwable-0.200013.tar.gz
+    provides:
+      StackTrace::Auto 0.200013
+      Throwable 0.200013
+      Throwable::Error 0.200013
+    requirements:
+      Carp 0
+      Devel::StackTrace 1.32
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0.002
+      Moo 1.000001
+      Moo::Role 0
+      Scalar::Util 0
+      Sub::Quote 0
+      overload 0
   Try-Tiny-0.30
     pathname: E/ET/ETHER/Try-Tiny-0.30.tar.gz
     provides:
@@ -2857,12 +2995,51 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008
+  YAML-1.30
+    pathname: T/TI/TINITA/YAML-1.30.tar.gz
+    provides:
+      YAML 1.30
+      YAML::Any 1.30
+      YAML::Dumper undef
+      YAML::Dumper::Base undef
+      YAML::Error undef
+      YAML::Loader undef
+      YAML::Loader::Base undef
+      YAML::Marshall undef
+      YAML::Mo undef
+      YAML::Node undef
+      YAML::Tag undef
+      YAML::Type::blessed undef
+      YAML::Type::code undef
+      YAML::Type::glob undef
+      YAML::Type::ref undef
+      YAML::Type::regexp undef
+      YAML::Type::undef undef
+      YAML::Types undef
+      YAML::Warning undef
+      yaml_mapping undef
+      yaml_scalar undef
+      yaml_sequence undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.008001
   alias-module-0.002
     pathname: P/PE/PERLANCAR/alias-module-0.002.tar.gz
     provides:
       alias::module 0.002
     requirements:
       ExtUtils::MakeMaker 0
+  aliased-0.34
+    pathname: E/ET/ETHER/aliased-0.34.tar.gz
+    provides:
+      aliased 0.34
+    requirements:
+      Carp 0
+      Exporter 0
+      Module::Build::Tiny 0.039
+      perl 5.006
+      strict 0
+      warnings 0
   namespace-autoclean-0.29
     pathname: E/ET/ETHER/namespace-autoclean-0.29.tar.gz
     provides:

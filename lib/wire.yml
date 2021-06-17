@@ -1,0 +1,5 @@
+request_repository:
+    class: Repository::Request
+    args:
+        dbc:
+            $ref: dbc

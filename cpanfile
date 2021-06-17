@@ -14,4 +14,5 @@ requires 'Types::XSD::Lite', 0;
 requires 'Type::Libraries', 0;
 requires 'String::Random', 0;
 requires 'Const::Fast', 0;
+requires 'Beam::Wire', 0;
 

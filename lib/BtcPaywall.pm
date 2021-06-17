@@ -5,6 +5,9 @@ use Mojo::Base 'Mojolicious';
 use Mojo::Pg;
 use Schema;
 use BtcPaywall::Component::MasterKey;
+use DI;
+
+use Model::Request;
 
 # This method will run once at server start
 sub startup ($self)
@@ -35,11 +38,12 @@ sub load_config ($self)
 	);
 
 	$self->helper(
-		dbc => sub ($self, $resultset) {
+		dbc => sub ($self) {
 			state $schema = Schema->connect(sub { $self->db->db->dbh });
-			return $schema->resultset($resultset);
 		}
 	);
+
+	DI->set('dbc', {value => $self->dbc});
 
 	BtcPaywall::Component::MasterKey::bootstrap($config->{master_key});
 }
