@@ -22,4 +22,24 @@ sub get_awaiting ($self)
 	];
 }
 
+sub get_items ($self, $model)
+{
+	my $result = $self->get_by_id($model, 1, prefetch => 'items');
+
+	return [
+		map { $_->item } $result->items
+	];
+}
+
+sub add_items ($self, $model, $items)
+{
+	my $result = $self->get_by_id($model, 1);
+
+	for my $item ($items->@*) {
+		$self->create_related(items => {item => $item});
+	}
+
+	return;
+}
+
 __PACKAGE__->meta->make_immutable;

@@ -24,6 +24,15 @@ CREATE TABLE requests (
 CREATE UNIQUE INDEX uniq_requests_derivation_index ON requests (derivation_index);
 CREATE INDEX ind_requests_lookup ON requests (status, account_id);
 
+CREATE TABLE request_items (
+	id serial primary key,
+	request_id uuid NOT NULL,
+	item TEXT NOT NULL,
+	CONSTRAINT fk_request_id
+		FOREIGN KEY(request_id)
+		REFERENCES requests(id)
+);
+
 -- 1 down
 
 DROP TABLE requests;
