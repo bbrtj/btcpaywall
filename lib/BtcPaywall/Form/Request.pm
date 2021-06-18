@@ -34,11 +34,14 @@ form_field 'ts' => (
 );
 
 form_field 'hash' => (
-	type => Types::PositiveInt,
+	type => Types::Str,
 	required => 1,
 );
 
 form_hook cleanup => sub ($self, $data) {
+	$self->add_error('items.*' => 'at least one item is required')
+		if $data->{items}->@* == 0;
+
 	$self->add_error(ts => 'timestamp timed out')
 		if time < $data->{ts} || time - $data->{ts} > _ts_treshold;
 

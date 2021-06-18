@@ -27,7 +27,9 @@ sub import
 	Carp->import::into($pkg, qw(croak));
 	Scalar::Util->import::into($pkg, qw(blessed));
 
-	namespace::autoclean->import(-cleanee => scalar(caller));
+	namespace::autoclean->import(-cleanee => scalar(caller))
+		unless grep { $_ eq -noclean } @args;
+
 	feature->unimport::out_of($pkg, 'indirect');
 	return;
 }

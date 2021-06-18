@@ -2355,6 +2355,12 @@ DISTRIBUTIONS
       parent 0.223
       strict 1.03
       warnings 1.03
+  Object-Sub-0.103
+    pathname: F/FR/FRACTAL/Object-Sub-0.103.tar.gz
+    provides:
+      Object::Sub 0.103
+    requirements:
+      ExtUtils::MakeMaker 0
   Package-DeprecationManager-0.17
     pathname: D/DR/DROLSKY/Package-DeprecationManager-0.17.tar.gz
     provides:
