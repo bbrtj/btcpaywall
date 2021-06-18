@@ -1,5 +1,11 @@
-request_repository:
+requests_repository:
     class: Repository::Request
+    args:
+        dbc:
+            $ref: dbc
+
+accounts_repository:
+    class: Repository::Account
     args:
         dbc:
             $ref: dbc

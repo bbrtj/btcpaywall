@@ -43,7 +43,7 @@ sub load_config ($self)
 		}
 	);
 
-	DI->set('dbc', {value => $self->dbc});
+	DI->set('dbc', $self->dbc);
 
 	BtcPaywall::Component::MasterKey::bootstrap($config->{master_key});
 }
