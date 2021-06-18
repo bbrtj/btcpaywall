@@ -20,6 +20,12 @@ has 'id' => (
 	default => sub { random_v4uuid },
 );
 
+has 'account_id' => (
+	is => 'ro',
+	isa => Types::Uuid,
+	required => 1,
+);
+
 has 'amount' => (
 	is => 'ro',
 	isa => Types::PositiveInt,
@@ -29,7 +35,6 @@ has 'amount' => (
 has 'derivation_index' => (
 	is => 'ro',
 	isa => Types::PositiveOrZeroInt,
-	required => 1,
 );
 
 has 'status' => (
