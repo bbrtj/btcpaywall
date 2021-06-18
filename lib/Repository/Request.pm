@@ -8,6 +8,7 @@ use Model::Request;
 with 'Repository::Role::Repository';
 
 use constant {
+	_model => 'Model::Request',
 	_model_type => Types::InstanceOf['Model::Request'],
 	_class => Model::Request->get_result_class,
 };

@@ -8,6 +8,7 @@ use Model::Request;
 with 'Repository::Role::Repository';
 
 use constant {
+	_model => 'Model::Account',
 	_model_type => Types::InstanceOf['Model::Account'],
 	_class => Model::Account->get_result_class,
 };

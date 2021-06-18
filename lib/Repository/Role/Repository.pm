@@ -11,11 +11,14 @@ has 'dbc' => (
 	default => sub { DI->get('dbc') },
 );
 
-sub get_by_id ($self, $id)
+sub get_by_id ($self, $id, $raw = 0, %options)
 {
-	return $self->dbc->resultset($self->_class)
-		->search({id => $id})
+	my $result = $self->dbc->resultset($self->_class)
+		->search({id => $id}, {prefetch => [$options{prefetch}]})
 		->first;
+
+	return $result if $raw;
+	return $self->model->from_result($result);
 }
 
 sub save ($self, $model, $update = 0)
