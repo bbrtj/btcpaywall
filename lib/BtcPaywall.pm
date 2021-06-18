@@ -7,8 +7,6 @@ use Schema;
 use BtcPaywall::Component::MasterKey;
 use DI;
 
-use Model::Request;
-
 # This method will run once at server start
 sub startup ($self)
 {
@@ -64,5 +62,7 @@ sub load_routes ($self)
 
 sub load_models ($self)
 {
+	require Model::Request;
+	require Model::Account;
 }
 
