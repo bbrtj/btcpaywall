@@ -307,19 +307,6 @@ DISTRIBUTIONS
       Config::Any::YAML undef
     requirements:
       Module::Pluggable::Object 3.6
-  Const-Fast-0.014
-    pathname: L/LE/LEONT/Const-Fast-0.014.tar.gz
-    provides:
-      Const::Fast 0.014
-    requirements:
-      Carp 0
-      Module::Build::Tiny 0.021
-      Scalar::Util 0
-      Storable 0
-      Sub::Exporter::Progressive 0.001007
-      perl 5.008
-      strict 0
-      warnings 0
   Context-Preserve-0.03
     pathname: E/ET/ETHER/Context-Preserve-0.03.tar.gz
     provides:
@@ -360,6 +347,13 @@ DISTRIBUTIONS
       Time::HiRes 1.9711
       base 0
       perl 5.006002
+  Crypt-Rijndael-1.16
+    pathname: L/LE/LEONT/Crypt-Rijndael-1.16.tar.gz
+    provides:
+      Crypt::Rijndael 1.16
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.006
   CryptX-0.072
     pathname: M/MI/MIK/CryptX-0.072.tar.gz
     provides:
@@ -768,6 +762,48 @@ DISTRIBUTIONS
       Exporter 0
       ExtUtils::MakeMaker 0
       perl 5.006
+  Data-Entropy-0.007
+    pathname: Z/ZE/ZEFRAM/Data-Entropy-0.007.tar.gz
+    provides:
+      Data::Entropy 0.007
+      Data::Entropy::Algorithms 0.007
+      Data::Entropy::RawSource::CryptCounter 0.007
+      Data::Entropy::RawSource::Local 0.007
+      Data::Entropy::RawSource::RandomOrg 0.007
+      Data::Entropy::RawSource::RandomnumbersInfo 0.007
+      Data::Entropy::Source 0.007
+    requirements:
+      Carp 0
+      Crypt::Rijndael 0
+      Data::Float 0.008
+      Errno 1.00
+      Exporter 0
+      HTTP::Lite 2.2
+      IO::File 1.03
+      Module::Build 0
+      Params::Classify 0
+      Test::More 0
+      constant 0
+      integer 0
+      parent 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Data-Float-0.013
+    pathname: Z/ZE/ZEFRAM/Data-Float-0.013.tar.gz
+    provides:
+      Data::Float 0.013
+    requirements:
+      Carp 0
+      Exporter 0
+      Module::Build 0
+      Test::More 0
+      constant 0
+      integer 0
+      parent 0
+      perl 5.006
+      strict 0
+      warnings 0
   Data-OptList-0.110
     pathname: R/RJ/RJBS/Data-OptList-0.110.tar.gz
     provides:
@@ -1499,6 +1535,17 @@ DISTRIBUTIONS
       Scalar::Util 0
       XSLoader 0
       perl 5.014000
+      strict 0
+      warnings 0
+  HTTP-Lite-2.44
+    pathname: N/NE/NEILB/HTTP-Lite-2.44.tar.gz
+    provides:
+      HTTP::Lite 2.44
+    requirements:
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      Socket 1.3
+      perl 5.005
       strict 0
       warnings 0
   Hash-Merge-0.302
@@ -2352,6 +2399,19 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  Params-Classify-0.015
+    pathname: Z/ZE/ZEFRAM/Params-Classify-0.015.tar.gz
+    provides:
+      Params::Classify 0.015
+    requirements:
+      Exporter 0
+      Module::Build 0
+      Scalar::Util 1.01
+      Test::More 0
+      parent 0
+      perl 5.006001
+      strict 0
+      warnings 0
   Params-Util-1.102
     pathname: R/RE/REHSACK/Params-Util-1.102.tar.gz
     provides:
@@ -2979,11 +3039,11 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       WordList v0.7.4
-  XS-Parse-Keyword-0.06
-    pathname: P/PE/PEVANS/XS-Parse-Keyword-0.06.tar.gz
+  XS-Parse-Keyword-0.08
+    pathname: P/PE/PEVANS/XS-Parse-Keyword-0.08.tar.gz
     provides:
-      XS::Parse::Keyword 0.06
-      XS::Parse::Keyword::Builder 0.06
+      XS::Parse::Keyword 0.08
+      XS::Parse::Keyword::Builder 0.08
     requirements:
       ExtUtils::CBuilder 0
       Module::Build 0.4004

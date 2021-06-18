@@ -13,6 +13,6 @@ requires 'DateTime::Format::Pg', 0;
 requires 'Types::XSD::Lite', 0;
 requires 'Type::Libraries', 0;
 requires 'String::Random', 0;
-requires 'Const::Fast', 0;
+requires 'Data::Entropy', 0;
 requires 'Beam::Wire', 0;
 
