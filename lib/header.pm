@@ -12,7 +12,6 @@ require true;
 require Syntax::Keyword::Try;
 require Carp;
 require Scalar::Util;
-require Const::Fast;
 
 sub import
 {
@@ -27,7 +26,6 @@ sub import
 	true->import::into($pkg);
 	Carp->import::into($pkg, qw(croak));
 	Scalar::Util->import::into($pkg, qw(blessed));
-	Const::Fast->import::into($pkg);
 
 	namespace::autoclean->import(-cleanee => scalar(caller));
 	feature->unimport::out_of($pkg, 'indirect');
