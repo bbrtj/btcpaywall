@@ -58,8 +58,7 @@ sub load_routes ($self)
 	my $r = $self->routes;
 
 	# Normal route to controller
-	# $r->get('/g/:id')->to('goal#view');
-	# $r->websocket('/subscribe')->to('main#subscriber');
+	$r->post('/request/new')->to('requests#create');
 
 }
 
