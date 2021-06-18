@@ -10,7 +10,11 @@ sub create ($self)
 	$form->set_input($self->req->json);
 
 	if ($form->valid) {
-		$form->fields; # TODO
+		my $model = $form->to_model;
+		my $repo = DI->get('requests_repository');
+		$repo->save($model);
+		$repo->add_items($model, $form->fields->{items});
+		$self->respond(1, $model->id);
 	} else {
 		$self->respond(0, $form->errors);
 	}

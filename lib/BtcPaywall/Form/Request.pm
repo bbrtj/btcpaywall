@@ -5,6 +5,7 @@ use Form::Tiny -strict;
 use Types;
 use DI;
 use Crypt::Digest::SHA256 qw(sha256_hex);
+use Model::Request;
 
 use constant _ts_treshold => 300; # 5 minutes
 
@@ -63,4 +64,9 @@ sub create_hash($self, $data, $secret)
 		$data->{ts},
 		$secret
 	);
+}
+
+sub to_model ($self)
+{
+	return Model::Request->new($self->fields);
 }
