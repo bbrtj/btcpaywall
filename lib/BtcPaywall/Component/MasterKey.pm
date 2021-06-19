@@ -13,7 +13,7 @@ our @EXPORT = qw(
 
 my $signature_key = undef;
 
-sub bootstrap ($key)
+sub bootstrap ($self, $key)
 {
 	if (defined $key) {
 		$signature_key = btc_extprv->from_mnemonic($key)->derive_key(PATH)->get_basic_key;

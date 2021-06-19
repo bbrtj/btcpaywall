@@ -3,27 +3,37 @@ package BtcPaywall;
 use header;
 use Mojo::Base 'Mojolicious';
 use Mojo::Pg;
+use Mojo::Log;
+use Mojo::File qw(curfile);
 use Schema;
-use BtcPaywall::Component::MasterKey;
 use DI;
+use BtcPaywall::Component::MasterKey;
 use Dotenv -load;
 
 # This method will run once at server start
 sub startup ($self)
 {
-	load_config($self);
-	load_commands($self);
-	load_routes($self);
-	load_models($self);
+	$self->configure;
+	$self->load_commands;
+	$self->load_routes;
+	$self->load_models;
 }
 
-sub load_config ($self)
+sub configure ($self)
 {
 	my $config = $self->plugin('Config');
 
 	# Configure the application
 	$self->mode($config->{mode} // "development");
 	$self->secrets($config->{secrets});
+
+	if ($self->mode eq 'deployment') {
+		my $log = Mojo::Log->new(
+			path => curfile->dirname->sibling('logs')->child('application.log'),
+			level => 'error',
+		);
+		$self->log($log);
+	}
 
 	DI->set('db',
 		Mojo::Pg->new($ENV{DB_CONNECTION})
@@ -43,7 +53,7 @@ sub load_config ($self)
 		dbc => sub { state $schema = DI->get('dbc') }
 	);
 
-	BtcPaywall::Component::MasterKey::bootstrap($config->{master_key});
+	BtcPaywall::Component::MasterKey->bootstrap($config->{master_key});
 }
 
 sub load_commands ($self)
