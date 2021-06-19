@@ -804,6 +804,74 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Data-Object-Attributes-0.06
+    pathname: A/AW/AWNCORP/Data-Object-Attributes-0.06.tar.gz
+    provides:
+      Data::Object::Attributes 0.06
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 0
+      perl 5.014
+      registry 0
+      routines 0
+      strict 0
+      warnings 0
+  Data-Object-Class-2.02
+    pathname: A/AW/AWNCORP/Data-Object-Class-2.02.tar.gz
+    provides:
+      Data::Object::Class 2.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 0
+      perl 5.014
+      routines 0
+      strict 0
+      warnings 0
+  Data-Object-ClassHas-2.01
+    pathname: A/AW/AWNCORP/Data-Object-ClassHas-2.01.tar.gz
+    provides:
+      Data::Object::ClassHas 2.01
+    requirements:
+      Data::Object::Attributes 0.04
+      ExtUtils::MakeMaker 0
+      perl 5.014
+      routines 0
+      strict 0
+      warnings 0
+  Data-Object-Role-Buildable-0.03
+    pathname: A/AW/AWNCORP/Data-Object-Role-Buildable-0.03.tar.gz
+    provides:
+      Data::Object::Role::Buildable 0.03
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 0
+      perl 5.014
+      routines 0
+      strict 0
+      warnings 0
+  Data-Object-Role-Immutable-2.01
+    pathname: A/AW/AWNCORP/Data-Object-Role-Immutable-2.01.tar.gz
+    provides:
+      Data::Object::Role::Immutable 2.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 0
+      Readonly 2.05
+      perl 5.014
+      routines 0
+      strict 0
+      warnings 0
+  Data-Object-Role-Stashable-2.01
+    pathname: A/AW/AWNCORP/Data-Object-Role-Stashable-2.01.tar.gz
+    provides:
+      Data::Object::Role::Stashable 2.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 0
+      perl 5.014
+      routines 0
+      strict 0
+      warnings 0
   Data-OptList-0.110
     pathname: R/RJ/RJBS/Data-OptList-0.110.tar.gz
     provides:
@@ -1369,6 +1437,16 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Devel-Symdump-2.18
+    pathname: A/AN/ANDK/Devel-Symdump-2.18.tar.gz
+    provides:
+      Devel::Symdump 2.18
+      Devel::Symdump::Export undef
+    requirements:
+      Compress::Zlib 0
+      ExtUtils::MakeMaker 0
+      Test::More 0
+      perl 5.004
   Dist-CheckConflicts-0.11
     pathname: D/DO/DOY/Dist-CheckConflicts-0.11.tar.gz
     provides:
@@ -1379,6 +1457,20 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.30
       Module::Runtime 0.009
       base 0
+      strict 0
+      warnings 0
+  Dotenv-0.002
+    pathname: B/BO/BOOK/Dotenv-0.002.tar.gz
+    provides:
+      Dotenv 0.002
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Path::Tiny 0.011
+      Test::CPAN::Meta 0
+      Test::Pod 0
+      Test::Pod::Coverage 0
+      perl 5.010
       strict 0
       warnings 0
   Eval-Closure-0.14
@@ -2522,6 +2614,52 @@ DISTRIBUTIONS
       strict 0
       warnings 0
       warnings::register 0
+  Pod-Coverage-0.23
+    pathname: R/RC/RCLAMP/Pod-Coverage-0.23.tar.gz
+    provides:
+      Pod::Coverage 0.23
+      Pod::Coverage::CountParents undef
+      Pod::Coverage::ExportOnly undef
+      Pod::Coverage::Extractor 0.23
+      Pod::Coverage::Overloader undef
+    requirements:
+      Devel::Symdump 2.01
+      ExtUtils::MakeMaker 0
+      Pod::Find 0.21
+      Pod::Parser 1.13
+      Test::More 0
+  Pod-Parser-1.63
+    pathname: M/MA/MAREKR/Pod-Parser-1.63.tar.gz
+    provides:
+      Pod::Cache 1.63
+      Pod::Cache::Item 1.63
+      Pod::Find 1.63
+      Pod::Hyperlink 1.63
+      Pod::InputObjects 1.63
+      Pod::InputSource 1.63
+      Pod::InteriorSequence 1.63
+      Pod::List 1.63
+      Pod::Paragraph 1.63
+      Pod::ParseTree 1.63
+      Pod::ParseUtils 1.63
+      Pod::Parser 1.63
+      Pod::PlainText 2.07
+      Pod::Select 1.63
+    requirements:
+      Cwd 0
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      Test::More 0.6
+  Readonly-2.05
+    pathname: S/SA/SANKO/Readonly-2.05.tar.gz
+    provides:
+      Readonly 2.05
+      Readonly::Array undef
+      Readonly::Hash undef
+      Readonly::Scalar undef
+    requirements:
+      Module::Build::Tiny 0.035
+      perl 5.005
   Role-Tiny-2.002004
     pathname: H/HA/HAARG/Role-Tiny-2.002004.tar.gz
     provides:
@@ -2763,6 +2901,39 @@ DISTRIBUTIONS
       XS::Parse::Keyword 0.06
       XS::Parse::Keyword::Builder 0.06
       perl 5.014
+  Test-CPAN-Meta-0.25
+    pathname: B/BA/BARBIE/Test-CPAN-Meta-0.25.tar.gz
+    provides:
+      Test::CPAN::Meta 0.25
+      Test::CPAN::Meta::Version 0.25
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::File 0
+      Parse::CPAN::Meta 0.02
+      Test::Builder 0
+      Test::Builder::Tester 0
+      Test::More 0.70
+  Test-DB-0.07
+    pathname: A/AW/AWNCORP/Test-DB-0.07.tar.gz
+    provides:
+      Test::DB 0.07
+      Test::DB::Mssql 0.07
+      Test::DB::Mysql 0.07
+      Test::DB::Object 0.07
+      Test::DB::Postgres 0.07
+      Test::DB::Sqlite 0.07
+    requirements:
+      DBI 1.643
+      Data::Object::Class 2.02
+      Data::Object::ClassHas 2.01
+      Data::Object::Role::Buildable 0.03
+      Data::Object::Role::Immutable 2.01
+      Data::Object::Role::Stashable 2.01
+      ExtUtils::MakeMaker 0
+      perl 5.014
+      routines 0
+      strict 0
+      warnings 0
   Test-Deep-1.130
     pathname: R/RJ/RJBS/Test-Deep-1.130.tar.gz
     provides:
@@ -2861,6 +3032,28 @@ DISTRIBUTIONS
       Test::More 0.47
       Test::Tester 0.107
       perl 5.006
+  Test-Pod-1.52
+    pathname: E/ET/ETHER/Test-Pod-1.52.tar.gz
+    provides:
+      Test::Pod 1.52
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Find 0
+      Pod::Simple 3.05
+      Test::Builder::Tester 1.02
+      Test::More 0.62
+      perl 5.008
+  Test-Pod-Coverage-1.10
+    pathname: N/NE/NEILB/Test-Pod-Coverage-1.10.tar.gz
+    provides:
+      Test::Pod::Coverage 1.10
+    requirements:
+      ExtUtils::MakeMaker 0
+      Pod::Coverage 0
+      Test::Builder 0
+      perl 5.006
+      strict 0
+      warnings 0
   Test-Warn-0.36
     pathname: B/BI/BIGJ/Test-Warn-0.36.tar.gz
     provides:
@@ -3128,6 +3321,16 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Package::Stash 0.23
       perl 5.008001
+  routines-0.02
+    pathname: A/AW/AWNCORP/routines-0.02.tar.gz
+    provides:
+      registry 0.02
+      routines 0.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      Function::Parameters 2.001003
+      Type::Tiny 1.004004
+      perl 5.014
   true-v1.0.2
     pathname: C/CH/CHOCOLATE/true-v1.0.2.tar.gz
     provides:

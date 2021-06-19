@@ -16,5 +16,6 @@ requires 'String::Random', 0;
 requires 'Data::Entropy', 0;
 requires 'Beam::Wire', 0;
 requires 'Object::Sub', 0;
+requires 'Test::DB', 0;
 requires 'Dotenv', 0;
 
