@@ -20,6 +20,12 @@ has 'account_index' => (
 	isa => Types::PositiveOrZeroInt,
 );
 
+has 'callback_uri' => (
+	is => 'ro',
+	isa => Types::Str,
+	required => 1,
+);
+
 has 'secret' => (
 	is => 'ro',
 	isa => Types::Str,

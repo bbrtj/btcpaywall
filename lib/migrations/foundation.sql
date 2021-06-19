@@ -6,6 +6,7 @@ CREATE SEQUENCE bip44_indexes MINVALUE 0 MAXVALUE 2147483647 START 0;
 CREATE TABLE accounts (
 	id uuid primary key,
 	account_index INT NOT NULL DEFAULT nextval('bip44_accounts'),
+	callback_uri VARCHAR(256) NOT NULL,
 	secret VARCHAR(32) NOT NULL
 );
 

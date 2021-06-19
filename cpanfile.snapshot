@@ -2822,17 +2822,18 @@ DISTRIBUTIONS
       perl 5.006_001
       strict 0
       warnings 0
-  Sub-Exporter-0.987
-    pathname: R/RJ/RJBS/Sub-Exporter-0.987.tar.gz
+  Sub-Exporter-0.988
+    pathname: R/RJ/RJBS/Sub-Exporter-0.988.tar.gz
     provides:
-      Sub::Exporter 0.987
-      Sub::Exporter::Util 0.987
+      Sub::Exporter 0.988
+      Sub::Exporter::Util 0.988
     requirements:
       Carp 0
       Data::OptList 0.100
-      ExtUtils::MakeMaker 6.30
+      ExtUtils::MakeMaker 6.78
       Params::Util 0.14
       Sub::Install 0.92
+      perl 5.008000
       strict 0
       warnings 0
   Sub-Exporter-Progressive-0.001013
@@ -3065,16 +3066,16 @@ DISTRIBUTIONS
       Test::Builder 0.13
       Test::Builder::Tester 1.02
       perl 5.006
-  Throwable-0.200013
-    pathname: R/RJ/RJBS/Throwable-0.200013.tar.gz
+  Throwable-0.201
+    pathname: R/RJ/RJBS/Throwable-0.201.tar.gz
     provides:
-      StackTrace::Auto 0.200013
-      Throwable 0.200013
-      Throwable::Error 0.200013
+      StackTrace::Auto 0.201
+      Throwable 0.201
+      Throwable::Error 0.201
     requirements:
       Carp 0
       Devel::StackTrace 1.32
-      ExtUtils::MakeMaker 0
+      ExtUtils::MakeMaker 6.78
       Module::Runtime 0.002
       Moo 1.000001
       Moo::Role 0
