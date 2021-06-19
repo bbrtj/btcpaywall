@@ -2,8 +2,9 @@ use header -noclean;
 use Test::More;
 use Object::Sub;
 use BtcPaywall::Form::Request;
-use Crypt::Digest::SHA256 qw(sha256_hex);
 use Data::Dumper;
+use lib 't/lib';
+use HashTest;
 
 my $test_client = 'c397e34f-e686-4d6c-8912-d139eb377c1b';
 my $test_secret = 'Uqn3USEcpttjin9Deqb4B8dFl291PUYi';
@@ -16,11 +17,6 @@ my $repository_mock = Object::Sub->new({
 	},
 });
 
-sub create_hash (@data)
-{
-	return sha256_hex(join '//', @data);
-}
-
 my @data = (
 	[
 		1,
@@ -29,7 +25,7 @@ my @data = (
 			amount => 500,
 			items => ['some item'],
 			ts => $test_time - 30,
-			hash => create_hash($test_client, 500, 'some item', $test_time - 30, $test_secret)
+			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time - 30, $test_secret)
 		},
 		'basic case ok'
 	],
@@ -40,7 +36,7 @@ my @data = (
 			amount => 500,
 			items => ['i1', 'i2'],
 			ts => $test_time - 60,
-			hash => create_hash($test_client, 500, 'i1', 'i2', $test_time - 60, $test_secret)
+			hash => HashTest->create_hash($test_client, 500, 'i1', 'i2', $test_time - 60, $test_secret)
 		},
 		'two items are ok'
 	],
@@ -51,7 +47,7 @@ my @data = (
 			amount => 500,
 			items => ['some item'],
 			ts => $test_time - 301,
-			hash => create_hash($test_client, 500, 'some item', $test_time - 301, $test_secret)
+			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time - 301, $test_secret)
 		},
 		'too old ok'
 	],
@@ -62,7 +58,7 @@ my @data = (
 			amount => 500,
 			items => ['some item'],
 			ts => $test_time + 2,
-			hash => create_hash($test_client, 500, 'some item', $test_time + 2, $test_secret)
+			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time + 2, $test_secret)
 		},
 		'timestamp from the future ok'
 	],
@@ -73,7 +69,7 @@ my @data = (
 			amount => 500,
 			items => [],
 			ts => $test_time - 30,
-			hash => create_hash($test_client, 500, $test_time - 30, $test_secret)
+			hash => HashTest->create_hash($test_client, 500, $test_time - 30, $test_secret)
 		},
 		'no items at all ok'
 	],
@@ -84,7 +80,7 @@ my @data = (
 			amount => 500,
 			items => ['some item'],
 			ts => $test_time - 30,
-			hash => create_hash($test_client, 500, 'some item', $test_time - 30, 'this-is-a-wrong-secret')
+			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time - 30, 'this-is-a-wrong-secret')
 		},
 		'wrong secret ok'
 	],
@@ -95,7 +91,7 @@ my @data = (
 			amount => 0,
 			items => ['some item'],
 			ts => $test_time - 30,
-			hash => create_hash($test_client, 0, 'some item', $test_time - 30, $test_secret)
+			hash => HashTest->create_hash($test_client, 0, 'some item', $test_time - 30, $test_secret)
 		},
 		'non-positive amount ok'
 	],
