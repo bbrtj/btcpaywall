@@ -6,6 +6,7 @@ use Mojo::Pg;
 use Schema;
 use BtcPaywall::Component::MasterKey;
 use DI;
+use Dotenv -load;
 
 # This method will run once at server start
 sub startup ($self)
@@ -18,30 +19,29 @@ sub startup ($self)
 
 sub load_config ($self)
 {
-	# Load configuration from config file
 	my $config = $self->plugin('Config');
-	my $config_local = $self->plugin('Config', ext => "conf.local");
-	$config = {%$config, %$config_local};
 
 	# Configure the application
 	$self->mode($config->{mode} // "development");
 	$self->secrets($config->{secrets});
 
-	$self->helper(
-		db => sub {
-			state $pg = Mojo::Pg->new($config->{db}{connection})
-				->username($config->{db}{user})
-				->password($config->{db}{pass});
-		}
+	DI->set('db',
+		Mojo::Pg->new($ENV{DB_CONNECTION})
+			->username($ENV{DB_USER})
+			->password($ENV{DB_PASS})
+	);
+
+	DI->set('dbc',
+		Schema->connect(sub { DI->get('db')->db->dbh })
 	);
 
 	$self->helper(
-		dbc => sub ($self) {
-			state $schema = Schema->connect(sub { $self->db->db->dbh });
-		}
+		db => sub { state $pg = DI->get('db') }
 	);
 
-	DI->set('dbc', $self->dbc);
+	$self->helper(
+		dbc => sub { state $schema = DI->get('dbc') }
+	);
 
 	BtcPaywall::Component::MasterKey::bootstrap($config->{master_key});
 }

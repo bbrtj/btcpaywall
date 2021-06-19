@@ -1,5 +1,5 @@
 /.tidyall.d
 /local
-/*.conf.local
+/.env
 /public/dist
 /master.key
