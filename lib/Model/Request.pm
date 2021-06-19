@@ -39,13 +39,14 @@ has 'derivation_index' => (
 
 has 'status' => (
 	is => 'ro',
-	isa => Types::PositiveInt,
+	isa => Types::Str,
 	default => sub { STATUS_AWAITING },
 );
 
 has 'ts' => (
 	is => 'ro',
 	isa => Types::DateTime,
+	coerce => 1,
 	default => sub { time },
 );
 

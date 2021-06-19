@@ -14,7 +14,9 @@ sub get ($class, @args)
 	$class->_create->get(@args);
 }
 
-sub set ($class, @args)
+sub set ($class, $name, $value, $replace = 0)
 {
-	$class->_create->set(@args);
+	if ($replace || !exists $class->_create->config->{$name}) {
+		$class->_create->set($name, $value);
+	}
 }

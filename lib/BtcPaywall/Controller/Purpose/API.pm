@@ -11,6 +11,6 @@ sub respond ($self, $status, $data)
 		data => $data,
 	);
 
-	return $self->send(json => \%ret);
+	return $self->render(json => \%ret);
 }
 

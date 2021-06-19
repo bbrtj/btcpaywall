@@ -1,4 +1,4 @@
-package BtcPaywall::Controller::Main;
+package BtcPaywall::Controller::Requests;
 
 use header;
 use Mojo::Base 'BtcPaywall::Controller::Purpose::API';

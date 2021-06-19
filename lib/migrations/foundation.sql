@@ -35,6 +35,7 @@ CREATE TABLE request_items (
 
 -- 1 down
 
+DROP TABLE request_items;
 DROP TABLE requests;
 DROP TABLE accounts;
 DROP SEQUENCE bip44_indexes;
