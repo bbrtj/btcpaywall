@@ -7,7 +7,7 @@ use Mojo::Log;
 use Mojo::File qw(curfile);
 use Schema;
 use DI;
-use BtcPaywall::Component::MasterKey;
+use Component::MasterKey;
 use Dotenv -load;
 
 # This method will run once at server start
@@ -53,7 +53,7 @@ sub configure ($self)
 		dbc => sub { state $schema = DI->get('dbc') }
 	);
 
-	BtcPaywall::Component::MasterKey->bootstrap($config->{master_key});
+	Component::MasterKey->bootstrap($config->{master_key});
 }
 
 sub load_commands ($self)
@@ -65,8 +65,9 @@ sub load_routes ($self)
 {
 	my $r = $self->routes;
 
-	# Normal route to controller
 	$r->post('/request/new')->to('requests#create');
+	$r->get('/paywall/compat/:uuid')->to('main#paywall_compat');
+	$r->get('/paywall/:uuid')->to('main#paywall');
 
 }
 
