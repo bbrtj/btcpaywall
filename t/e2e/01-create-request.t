@@ -13,7 +13,9 @@ use HashTest;
 DatabaseTest->test(sub {
 	my $t = Test::Mojo->new('BtcPaywall', {mode => 'deployment'});
 
-	my $acc = Model::Account->new;
+	my $acc = Model::Account->new(
+		callback_uri => '127.0.0.1/test'
+	);
 	DI->get('accounts_repository')->save($acc);
 
 	my $ts = time - 50;
