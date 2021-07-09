@@ -65,6 +65,7 @@ sub run ($self, @args)
 
 __END__
 =head1 SYNOPSIS
+
 	Usage: APPLICATION migrate [OPTIONS]
 	Options:
 		--up  migrates up

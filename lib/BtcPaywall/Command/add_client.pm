@@ -23,4 +23,5 @@ sub run ($self, $uri, @args)
 
 __END__
 =head1 SYNOPSIS
-	Usage: APPLICATION add_client [CALLBACK URI]
+
+	Usage: APPLICATION add-client [CALLBACK URI]
