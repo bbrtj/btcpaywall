@@ -1,0 +1,11 @@
+% if ($model->is_complete) {
+	<b>Already paid</b>
+% }
+%= $model->amount
+
+%= $address
+<img src="data:image/png;base64,<%= $png %>">
+
+% for my $item ($items->@*) {
+	%= $item
+% }

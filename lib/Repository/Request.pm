@@ -20,11 +20,11 @@ sub get_awaiting ($self)
 	];
 }
 
-sub get_items ($self, $model)
+sub get_with_items ($self, $id)
 {
-	my $result = $self->get_by_id($model->id, 1, prefetch => 'items');
+	my $result = $self->get_by_id($id, 1, prefetch => 'items');
 
-	return [
+	return $self->_model->from_result($result), [
 		map { $_->item } $result->items
 	];
 }

@@ -11,7 +11,6 @@ use constant {
 	STATUS_AWAITING => 'awaiting',
 	STATUS_COMPLETE => 'complete',
 	STATUS_TIMEOUT => 'timeout',
-	STATUS_INVALID => 'invalid',
 };
 
 has 'id' => (
@@ -49,5 +48,15 @@ has 'ts' => (
 	coerce => 1,
 	default => sub { time },
 );
+
+sub is_awaiting ($self)
+{
+	return $self->status eq STATUS_AWAITING;
+}
+
+sub is_complete ($self)
+{
+	return $self->status eq STATUS_COMPLETE;
+}
 
 __PACKAGE__->_register;
