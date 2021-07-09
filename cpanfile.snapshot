@@ -1649,6 +1649,13 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.64
       Scalar::Util 0
       perl 5.008001
+  Image-PNG-QRCode-0.10
+    pathname: B/BK/BKB/Image-PNG-QRCode-0.10.tar.gz
+    provides:
+      Image::PNG::QRCode 0.10
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.006001
   Import-Into-1.002005
     pathname: H/HA/HAARG/Import-Into-1.002005.tar.gz
     provides:
