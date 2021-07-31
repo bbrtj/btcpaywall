@@ -33,13 +33,12 @@ DatabaseTest->test(sub {
 		->json_is('/status' => 1);
 
 	my $request_id = $t->tx->res->json('/data');
-	my $request = DI->get('requests_repository')->get_by_id($request_id);
+	my ($request, $items) = DI->get('requests_repository')->get_with_items($request_id);
 
 	is $request->account_id, $acc->id, 'account ok';
 	is $request->amount, 999, 'amount ok';
 	is $request->ts, Types::DateTime->coerce($ts), 'timestamp ok';
 
-	my $items = DI->get('requests_repository')->get_items($request);
 	is_deeply $items, $raw_items, 'items ok';
 });
 

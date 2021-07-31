@@ -2,28 +2,30 @@ package Component::MasterKey;
 
 use header;
 use Bitcoin::Crypto qw(btc_extprv);
+use Moo;
+use Mojo::File qw(path);
 
-# as private as it gets
-my $master_key = undef;
+with 'Component::Role::HasEnv';
 
-sub bootstrap ($self, $key)
-{
-	if (defined $key) {
-		$master_key = btc_extprv->from_mnemonic($key);
-		$master_key->set_network($ENV{NETWORK} // 'bitcoin');
-	}
-	return;
-}
+has '_master_key' => (
+	is => 'ro',
+	isa => Types::InstanceOf['Bitcoin::Crypto::Key::ExtPrivate'],
+	lazy => 1,
+	default => sub ($self) {
+		my $key = path($self->getenv('MASTER_KEY'));
+		croak 'invalid MASTER_KEY path setting'
+			unless -f $key;
 
-sub _check
-{
-	die "cannot complete cryptographic action: no master key" unless defined $master_key;
-}
+		btc_extprv
+			->from_mnemonic($key->slurp)
+			->set_network($self->env->getenv('CRYPTO_NETWORK'));
+	},
+	init_arg => undef,
+);
 
 sub get_payment_address ($self, $account, $request, $compat = 0)
 {
-	_check;
-	my $extprv = $master_key->derive_key_bip44(
+	my $extprv = $self->_master_key->derive_key_bip44(
 		account => $account->account_index,
 		index => $request->derivation_index,
 	);

@@ -2,13 +2,9 @@ package BtcPaywall;
 
 use header;
 use Mojo::Base 'Mojolicious';
-use Mojo::Pg;
 use Mojo::Log;
 use Mojo::File qw(curfile);
-use Schema;
 use DI;
-use Component::MasterKey;
-use Dotenv -load;
 
 # This method will run once at server start
 sub startup ($self)
@@ -35,25 +31,13 @@ sub configure ($self)
 		$self->log($log);
 	}
 
-	DI->set('db',
-		Mojo::Pg->new($ENV{DB_CONNECTION})
-			->username($ENV{DB_USER})
-			->password($ENV{DB_PASS})
-	);
-
-	DI->set('dbc',
-		Schema->connect(sub { DI->get('db')->db->dbh })
+	$self->helper(
+		db => sub { state $pg = DI->get('db')->dbh }
 	);
 
 	$self->helper(
-		db => sub { state $pg = DI->get('db') }
+		dbc => sub { state $schema = DI->get('db')->dbc }
 	);
-
-	$self->helper(
-		dbc => sub { state $schema = DI->get('dbc') }
-	);
-
-	Component::MasterKey->bootstrap($config->{master_key});
 }
 
 sub load_commands ($self)

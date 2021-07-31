@@ -2,11 +2,11 @@ package DI;
 
 use header;
 use Beam::Wire;
-use Path::Tiny;
+use Mojo::File qw(path);
 
 sub _create ($class)
 {
-	state $wire = Beam::Wire->new(file => path(__FILE__)->parent->child('wire.yml'));
+	state $wire = Beam::Wire->new(file => path(__FILE__)->dirname->child('wire.yml'));
 }
 
 sub get ($class, @args)
@@ -19,4 +19,19 @@ sub set ($class, $name, $value, $replace = 0)
 	if ($replace || !exists $class->_create->config->{$name}) {
 		$class->_create->set($name, $value);
 	}
+	return;
+}
+
+sub forget ($class, $name)
+{
+	my $bm = $class->_create;
+	if (exists $bm->services->{$name}) {
+		delete $bm->services->{$name};
+	}
+	return;
+}
+
+sub has ($class, $name)
+{
+	return exists $class->_create->services->{$name};
 }

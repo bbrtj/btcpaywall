@@ -14,7 +14,7 @@ use constant {
 sub get_awaiting ($self)
 {
 	return [
-		$self->dbc->resultset($self->_class)->search({
+		$self->db->dbc->resultset($self->_class)->search({
 			status => Model::Request->STATUS_AWAITING,
 		})
 	];

@@ -7,14 +7,14 @@ use Types;
 
 requires qw(_class _model);
 
-has 'dbc' => (
+has 'db' => (
 	is => 'ro',
-	default => sub { DI->get('dbc') },
+	default => sub { DI->get('db') },
 );
 
 sub get_by_id ($self, $id, $raw = 0, %options)
 {
-	my $result = $self->dbc->resultset($self->_class)
+	my $result = $self->db->dbc->resultset($self->_class)
 		->search({'me.id' => $id}, {prefetch => [$options{prefetch}]})
 		->first;
 
@@ -27,5 +27,5 @@ sub save ($self, $model, $update = 0)
 	(Types::InstanceOf[$self->_model])->assert_valid($model);
 
 	my $type = $update ? 'update' : 'create';
-	return $self->dbc->resultset($self->_class)->$type($model->serialize);
+	return $self->db->dbc->resultset($self->_class)->$type($model->serialize);
 }

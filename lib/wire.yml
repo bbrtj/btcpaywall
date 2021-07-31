@@ -1,11 +1,32 @@
+env:
+    class: Component::Env
+
+db:
+    class: Component::DB
+    args:
+        env:
+            $ref: env
+
+node:
+    class: Component::BitcoinNode
+    args:
+        env:
+            $ref: env
+
+master_key:
+    class: Component::MasterKey
+    args:
+        env:
+            $ref: env
+
 requests_repository:
     class: Repository::Request
     args:
-        dbc:
-            $ref: dbc
+        db:
+            $ref: db
 
 accounts_repository:
     class: Repository::Account
     args:
-        dbc:
-            $ref: dbc
+        db:
+            $ref: db
