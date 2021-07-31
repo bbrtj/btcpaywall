@@ -20,7 +20,8 @@ has 'rpc' => (
 		Bitcoin::RPC::Client->new(
 			user => $self->env->getenv('RPC_USERNAME'),
 			password => $self->env->getenv('RPC_PASSWORD'),
-			host => "127.0.0.1",
+			port => $self->env->getenv('RPC_PORT'),
+			host => '127.0.0.1',
 		);
 	},
 );
@@ -35,6 +36,7 @@ sub _get_balance ($self, $address, $blocks)
 sub configure ($self)
 {
 	$self->rpc->createwallet(WALLET_NAME);
+	$self->rpc->unloadwallet(WALLET_NAME);
 	$self->rpc->loadwallet(WALLET_NAME, true);
 	return;
 }
