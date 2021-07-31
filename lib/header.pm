@@ -31,6 +31,7 @@ sub import
 		unless grep { $_ eq -noclean } @args;
 
 	feature->unimport::out_of($pkg, 'indirect');
+	warnings->unimport::out_of($pkg, 'experimental::signatures');
 	return;
 }
 

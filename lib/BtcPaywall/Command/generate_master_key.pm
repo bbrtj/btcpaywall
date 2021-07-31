@@ -1,9 +1,10 @@
 package BtcPaywall::Command::generate_master_key;
 
-use header;
 use Mojo::Base 'Mojolicious::Command';
 use Bitcoin::Crypto qw(btc_extprv);
 use Mojo::File qw(curfile);
+
+use header;
 
 has description => 'generate a new master key';
 

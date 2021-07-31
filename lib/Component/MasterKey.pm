@@ -1,9 +1,10 @@
 package Component::MasterKey;
 
-use header;
 use Bitcoin::Crypto qw(btc_extprv);
 use Moo;
 use Mojo::File qw(path);
+
+use header;
 
 with 'Component::Role::HasEnv';
 

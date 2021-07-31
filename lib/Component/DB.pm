@@ -1,10 +1,11 @@
 package Component::DB;
 
-use header;
 use Types;
 use Moo;
 use Mojo::Pg;
 use Schema;
+
+use header;
 
 with 'Component::Role::HasEnv';
 

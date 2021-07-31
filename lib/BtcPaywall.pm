@@ -1,10 +1,11 @@
 package BtcPaywall;
 
-use header;
 use Mojo::Base 'Mojolicious';
 use Mojo::Log;
 use Mojo::File qw(curfile);
 use DI;
+
+use header;
 
 # This method will run once at server start
 sub startup ($self)

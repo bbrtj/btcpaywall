@@ -1,9 +1,10 @@
 package BtcPaywall::Command::add_client;
 
-use header;
 use Mojo::Base 'Mojolicious::Command';
 use DI;
 use Model::Account;
+
+use header;
 
 has description => 'add a new API client';
 

@@ -1,8 +1,9 @@
 package Component::Role::HasEnv;
 
-use header;
 use Types;
 use Moo::Role;
+
+use header;
 
 has 'env' => (
 	is => 'ro',

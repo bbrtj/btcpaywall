@@ -1,10 +1,11 @@
 package BtcPaywall::Controller::Main;
 
-use header;
 use Mojo::Base 'Mojolicious::Controller';
 use DI;
 use Image::PNG::QRCode 'qrpng';
 use MIME::Base64;
+
+use header;
 
 sub paywall ($self, $compat = 0)
 {

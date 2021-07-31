@@ -1,9 +1,10 @@
 package Repository::Role::Repository;
 
-use header;
 use Moose::Role;
 use DI;
 use Types;
+
+use header;
 
 requires qw(_class _model);
 

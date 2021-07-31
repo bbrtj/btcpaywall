@@ -1,9 +1,10 @@
 package BtcPaywall::Command::migrate;
 
-use header;
 use Mojo::Base 'Mojolicious::Command';
 use Getopt::Long qw(GetOptionsFromArray);
 use Mojo::File qw(curfile path);
+
+use header;
 
 has description => 'migrate database schema';
 

@@ -1,11 +1,12 @@
 package Component::BitcoinNode;
 
-use header;
 use Moo;
 use Bitcoin::RPC::Client;
 use Types;
 use Mojo::JSON qw(true false);
 use List::Util qw(sum0);
+
+use header;
 
 use constant WALLET_NAME => 'paywall_wallet.dat';
 use constant BLOCKS_NOLIMIT => 9999999;

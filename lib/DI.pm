@@ -1,8 +1,9 @@
 package DI;
 
-use header;
 use Beam::Wire;
 use Mojo::File qw(path);
+
+use header;
 
 sub _create ($class)
 {

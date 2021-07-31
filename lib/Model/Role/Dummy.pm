@@ -1,9 +1,10 @@
 package Model::Role::Dummy;
 
-use header;
 use Moose::Role;
 use Moose::Util qw(find_meta);
 use List::Util qw(first);
+
+use header;
 
 before "dummy" => sub {
 	die "Cannot dummy a dummy";

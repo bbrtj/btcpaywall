@@ -1,9 +1,10 @@
 package Model::Request;
 
-use header;
 use Moose;
 use Crypt::Misc qw(random_v4uuid);
 use Types;
+
+use header;
 
 with 'Model';
 

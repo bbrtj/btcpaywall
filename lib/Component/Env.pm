@@ -1,9 +1,10 @@
 package Component::Env;
 
-use header;
 use Types;
 use Moo;
 use Dotenv -load;
+
+use header;
 
 has 'rawenv' => (
 	is => 'ro',

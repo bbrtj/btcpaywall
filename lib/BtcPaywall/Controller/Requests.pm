@@ -1,8 +1,9 @@
 package BtcPaywall::Controller::Requests;
 
-use header;
 use Mojo::Base 'BtcPaywall::Controller::Purpose::API';
 use BtcPaywall::Form::Request;
+
+use header;
 
 sub create ($self)
 {

@@ -1,11 +1,12 @@
 package Model::Account;
 
-use header;
 use Moose;
 use Crypt::Misc qw(random_v4uuid);
 use Types;
 use String::Random;
 use Data::Entropy::Algorithms qw(rand);
+
+use header;
 
 with 'Model';
 

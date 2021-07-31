@@ -1,11 +1,12 @@
 package Types;
 
-use header;
 use Type::Libraries;
 use Type::Tiny;
 use Types::Standard qw(Num);
 use Types::DateTime qw(DateTime Format);
 use Types::XSD::Lite qw(Base64Binary);
+
+use header;
 
 Type::Libraries->setup_class(
 	__PACKAGE__,

@@ -1,8 +1,9 @@
 package Model;
 
-use header;
 use Moo::Role;
 use Model::Role::Dummy;
+
+use header;
 
 my %orm_mapping;
 my %orm_mapping_reverse;
