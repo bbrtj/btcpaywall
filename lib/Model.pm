@@ -16,7 +16,9 @@ sub _install_writers ($class)
 		my $writer_attr = $attribute->meta->find_attribute_by_name("writer");
 
 		if (!$writer_attr->get_value($attribute)) {
+			$attribute->remove_accessors;
 			$writer_attr->set_value($attribute, "set_$name");
+			$attribute->install_accessors;
 		}
 	}
 

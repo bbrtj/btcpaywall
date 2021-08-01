@@ -13,7 +13,7 @@ has '_master_key' => (
 	isa => Types::InstanceOf['Bitcoin::Crypto::Key::ExtPrivate'],
 	lazy => 1,
 	default => sub ($self) {
-		my $key = path($self->getenv('MASTER_KEY'));
+		my $key = path($self->env->getenv('MASTER_KEY'));
 		croak 'invalid MASTER_KEY path setting'
 			unless -f $key;
 

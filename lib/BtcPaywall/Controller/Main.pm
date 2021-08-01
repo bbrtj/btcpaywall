@@ -10,8 +10,7 @@ use header;
 sub paywall ($self, $compat = 0)
 {
 	state $req_repo = DI->get('requests_repository');
-	state $acc_repo = DI->get('accounts_repository');
-	state $master_key = DI->get('master_key');
+	state $address_service = DI->get('address_service');
 	my $uuid = $self->param('uuid');
 
 	my ($model, $items);
@@ -22,10 +21,7 @@ sub paywall ($self, $compat = 0)
 		return;
 	}
 
-	my $account = $acc_repo->get_by_id($model->account_id);
-	# This may fail randomly, but the probability of failing is lower than 1 / 2^127, so we don't care
-	my $address = $master_key->get_payment_address($account, $model, $compat);
-
+	my $address = $address_service->get_address($model, $compat);
 	$self->stash(
 		model => $model,
 		items => $items,

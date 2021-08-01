@@ -22,13 +22,11 @@ sub configure ($self)
 	$self->secrets($env->getenv('APP_SECRETS'));
 	$self->mode($env->getenv('APP_MODE'));
 
-	if ($self->mode eq 'deployment') {
-		my $log = Mojo::Log->new(
-			path => curfile->dirname->sibling('logs')->child('application.log'),
-			level => 'error',
-		);
-		$self->log($log);
-	}
+	my $log = Mojo::Log->new(
+		path => curfile->dirname->sibling('logs')->child('application.log'),
+		level => 'error',
+	);
+	$self->log($log);
 
 	$self->helper(
 		db => sub { state $pg = DI->get('db')->dbh }

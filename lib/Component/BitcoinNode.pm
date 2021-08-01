@@ -10,6 +10,7 @@ use header;
 
 use constant WALLET_NAME => 'paywall_wallet.dat';
 use constant BLOCKS_NOLIMIT => 9999999;
+use constant SATOSHI_PER_BITCOIN => 1_0000_0000;
 
 with 'Component::Role::HasEnv';
 
@@ -30,7 +31,7 @@ sub _get_balance ($self, $address, $blocks)
 {
 	my $txs = $self->rpc->listunspent($blocks, BLOCKS_NOLIMIT, [$address]);
 
-	return sum0 map { $_->{amount} } $txs->@*;
+	return sum0 map { $_->{amount} * SATOSHI_PER_BITCOIN } $txs->@*;
 }
 
 sub configure ($self)

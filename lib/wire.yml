@@ -30,3 +30,14 @@ accounts_repository:
     args:
         db:
             $ref: db
+
+# services
+
+address_service:
+    class: Services::AddressService
+    args:
+        account_repo:
+            $ref: accounts_repository
+        master_key:
+            $ref: master_key
+

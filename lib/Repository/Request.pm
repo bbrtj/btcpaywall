@@ -41,4 +41,14 @@ sub add_items ($self, $model, $items)
 	return;
 }
 
+around 'save' => sub ($orig, $self, $model, $update = 0) {
+	my $ret = $self->$orig($model, $update);
+	if ($ret) {
+		my $filled_model = $self->get_by_id($model->id);
+		$model->set_derivation_index($filled_model->derivation_index);
+	}
+
+	return $ret;
+};
+
 __PACKAGE__->meta->make_immutable;
