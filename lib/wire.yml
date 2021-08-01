@@ -40,4 +40,6 @@ address_service:
             $ref: accounts_repository
         master_key:
             $ref: master_key
+        node:
+            $ref: node
 
