@@ -18,11 +18,9 @@ sub startup ($self)
 
 sub configure ($self)
 {
-	my $config = $self->plugin('Config');
-
-	# Configure the application
-	$self->mode($config->{mode} // "development");
-	$self->secrets($config->{secrets});
+	my $env = DI->get('env');
+	$self->secrets($env->getenv('APP_SECRETS'));
+	$self->mode($env->getenv('APP_MODE'));
 
 	if ($self->mode eq 'deployment') {
 		my $log = Mojo::Log->new(
