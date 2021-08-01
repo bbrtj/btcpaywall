@@ -19,7 +19,7 @@ This project requires Perl 5.32 (best managed by perlbrew: https://perlbrew.pl/)
 - `carton exec script/btcpaywall generate-master-key` - will generate a new bitcoin key, which will be used to store bitcoins. Make sure to back it up and keep secure!
 - `carton exec script/btcpaywall configure-node` - will generate a new bitcoind wallet and tell the node to load it on startup. This wallet does not need to be backed up, it is only necessary to watch addresses.
 - `carton exec script/btcpaywall add-client <callback address>` - will create a new client in the database. Clients are able to request payments, and each time a payment is complete, the callback address (URL) will be queried.
-6. For production environments, make sure to set the `APP_MODE` in `.env` to `production`, as well as generating new `APP_SECRETS` (just google _"random sha256"_)
+6. For production environments, make sure to set the `APP_MODE` in `.env` to `deployment`, as well as generating new `APP_SECRETS` (just google _"random sha256"_)
 
 ## Running the production application
 
