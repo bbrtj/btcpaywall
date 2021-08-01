@@ -21,7 +21,7 @@ has 'rpc' => (
 			user => $self->env->getenv('RPC_USERNAME'),
 			password => $self->env->getenv('RPC_PASSWORD'),
 			port => $self->env->getenv('RPC_PORT'),
-			host => '127.0.0.1',
+			host => $self->env->getenv('RPC_HOST'),
 		);
 	},
 );
