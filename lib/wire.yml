@@ -43,3 +43,12 @@ address_service:
         node:
             $ref: node
 
+request_watcher:
+    class: Services::RequestWatcher
+    args:
+        address_service:
+            $ref: address_service
+        request_repo:
+            $ref: requests_repository
+        account_repo:
+            $ref: accounts_repository

@@ -20,3 +20,4 @@ requires 'Test::DB', 0;
 requires 'Dotenv', 0;
 requires 'Image::PNG::QRCode', 0;
 requires 'Bitcoin::RPC::Client', 0;
+requires 'Ref::Util';

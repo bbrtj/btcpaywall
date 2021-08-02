@@ -10,9 +10,14 @@ with 'Model';
 
 use constant {
 	STATUS_AWAITING => 'awaiting',
+	STATUS_PENDING => 'pending',
+	STATUS_CALLBACK_FAILED => 'callback_failed',
 	STATUS_COMPLETE => 'complete',
 	STATUS_TIMEOUT => 'timeout',
 };
+
+# 14 days
+use constant TTL => 60 * 60 * 24 * 14;
 
 has 'id' => (
 	is => 'ro',
@@ -53,6 +58,16 @@ has 'ts' => (
 sub is_awaiting ($self)
 {
 	return $self->status eq STATUS_AWAITING;
+}
+
+sub is_pending ($self)
+{
+	return $self->status eq STATUS_PENDING;
+}
+
+sub is_callback ($self)
+{
+	return $self->status eq STATUS_CALLBACK_FAILED;
 }
 
 sub is_complete ($self)

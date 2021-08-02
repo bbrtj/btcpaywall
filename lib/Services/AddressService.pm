@@ -33,19 +33,23 @@ sub get_address ($self, $request, $compat)
 	return $address;
 }
 
-sub get_address_blockchain_info ($self, $request, $compat)
+sub get_request_blockchain_info ($self, $request)
 {
-	my $address = $self->get_address($required, $compat);
+	my $address = $self->get_address($request, 0);
+	my $address_compat = $self->get_address($request, 1);
 
 	return Object::Sub->new({
 		is_complete => sub {
-			$self->node->check_payment($address, $request->amount);
+			$self->node->check_payment($address, $request->amount)
+				&& $self->node->check_payment($address_compat, $request->amount)
 		},
-		is_correct => sub {
-			$self->node->check_incorrect_payment($address, $request->amount);
+		is_incorrect => sub {
+			$self->node->check_incorrect_payment($address, $request->amount)
+				&& $self->node->check_incorrect_payment($address_compat, $request->amount)
 		},
 		is_pending => sub {
-			$self->node->check_unconfirmed_payment($address, $request->amount);
+			$self->node->check_unconfirmed_payment($address, $request->amount)
+				&& $self->node->check_unconfirmed_payment($address_compat, $request->amount)
 		},
 	});
 }
