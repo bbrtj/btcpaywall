@@ -43,7 +43,7 @@ sub add_items ($self, $model, $items)
 
 around 'save' => sub ($orig, $self, $model, $update = 0) {
 	my $ret = $self->$orig($model, $update);
-	if ($ret) {
+	if ($ret && !$update) {
 		my $filled_model = $self->get_by_id($model->id);
 		$model->set_derivation_index($filled_model->derivation_index);
 	}

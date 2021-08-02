@@ -1,4 +1,4 @@
-package Services::AddressService;
+package Service::Address;
 
 use Moo;
 use Types;

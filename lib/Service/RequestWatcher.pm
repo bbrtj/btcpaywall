@@ -1,28 +1,26 @@
-package Services::RequestWatcher;
+package Service::RequestWatcher;
 
 use Moo;
 use Types;
 use Model::Request;
-use Crypt::Digest::SHA256 qw(sha256_hex);
-use Mojo::UserAgent;
 
 use header;
 
 has 'address_service' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Services::AddressService'],
+	isa => Types::InstanceOf['Service::Address'],
+	required => 1,
+);
+
+has 'callback_service' => (
+	is => 'ro',
+	isa => Types::InstanceOf['Service::Callback'],
 	required => 1,
 );
 
 has 'request_repo' => (
 	is => 'ro',
 	isa => Types::InstanceOf['Repository::Request'],
-	required => 1,
-);
-
-has 'account_repo' => (
-	is => 'ro',
-	isa => Types::InstanceOf['Repository::Account'],
 	required => 1,
 );
 
@@ -35,31 +33,6 @@ sub get_unresolved_requests ($self)
 			Model::Request->STATUS_CALLBACK_FAILED,
 		]
 	);
-}
-
-sub run_callback ($self, $request)
-{
-	my $account = $self->account_repo->get_by_id($request->account_id);
-	my $uri = $account->callback_uri;
-	my $timestamp = time;
-
-	my $hash = sha256_hex(
-		$account->id,
-		$request->id,
-		$timestamp,
-		$account->secret
-	);
-
-	my $body = {
-		account_id => $account->id,
-		request_id => $request->id,
-		ts => $timestamp,
-		hash => $hash,
-	};
-
-	my $ua = Mojo::UserAgent->new;
-	my $tx = $ua->post($uri => json => $body);
-	return $tx->res->is_success;
 }
 
 sub resolve ($self)
@@ -76,15 +49,18 @@ sub resolve ($self)
 
 			# TODO: handle incorrect amount
 			if (($request->is_pending || $request->is_awaiting) && $info->is_complete) {
-				if ($self->run_callback($request)) {
+				if ($self->callback_service->run_callback($request)) {
 					$request->set_status(Model::Request->STATUS_COMPLETE);
 				}
 				else {
 					$request->set_status(Model::Request->STATUS_CALLBACK_FAILED);
 				}
+
+				$self->request_repo->save($request, 1);
 			}
 			if ($request->is_awaiting && $info->is_pending) {
 				$request->set_status(Model::Request->STATUS_PENDING);
+				$self->request_repo->save($request, 1);
 			}
 		}
 	}

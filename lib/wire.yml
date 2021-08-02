@@ -34,7 +34,7 @@ accounts_repository:
 # services
 
 address_service:
-    class: Services::AddressService
+    class: Service::Address
     args:
         account_repo:
             $ref: accounts_repository
@@ -43,12 +43,18 @@ address_service:
         node:
             $ref: node
 
+callback_service:
+    class: Service::Callback
+    args:
+        account_repo:
+            $ref: accounts_repository
+
 request_watcher:
-    class: Services::RequestWatcher
+    class: Service::RequestWatcher
     args:
         address_service:
             $ref: address_service
         request_repo:
             $ref: requests_repository
-        account_repo:
-            $ref: accounts_repository
+        callback_service:
+            $ref: callback_service
