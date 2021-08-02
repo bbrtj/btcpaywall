@@ -3,6 +3,8 @@ package Model::Request;
 use Moose;
 use Crypt::Misc qw(random_v4uuid);
 use Types;
+use DateTime;
+use DateTime::Duration;
 
 use header;
 
@@ -73,6 +75,11 @@ sub is_callback ($self)
 sub is_complete ($self)
 {
 	return $self->status eq STATUS_COMPLETE;
+}
+
+sub is_timed_out ($self)
+{
+	return $self->ts + DateTime::Duration->new(seconds => TTL) < DateTime->now;
 }
 
 __PACKAGE__->_register;

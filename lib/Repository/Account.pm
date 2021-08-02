@@ -1,7 +1,7 @@
 package Repository::Account;
 
 use Moose;
-use Model::Request;
+use Model::Account;
 
 use header;
 

@@ -35,32 +35,46 @@ sub get_unresolved_requests ($self)
 	);
 }
 
+sub _callback ($self, $request)
+{
+	if ($self->callback_service->run_callback($request)) {
+		$request->set_status(Model::Request->STATUS_COMPLETE);
+	}
+	else {
+		$request->set_status(Model::Request->STATUS_CALLBACK_FAILED);
+	}
+}
+
+sub _update ($self, $request)
+{
+	$self->request_repo->save($request, 1);
+}
+
 sub resolve ($self)
 {
 	my $unresolved = $self->get_unresolved_requests;
 
 	for my $request ($unresolved->@*) {
 
-		if ($request->ts + Model::Request->TTL < time) {
+		if ($request->is_timed_out) {
 			$request->set_status(Model::Request->STATUS_TIMEOUT);
+			$self->_update($request);
+		}
+		elsif ($request->is_callback) {
+			$self->_callback($request);
+			$self->_update($request);
 		}
 		else {
 			my $info = $self->address_service->get_request_blockchain_info($request);
 
 			# TODO: handle incorrect amount
 			if (($request->is_pending || $request->is_awaiting) && $info->is_complete) {
-				if ($self->callback_service->run_callback($request)) {
-					$request->set_status(Model::Request->STATUS_COMPLETE);
-				}
-				else {
-					$request->set_status(Model::Request->STATUS_CALLBACK_FAILED);
-				}
-
-				$self->request_repo->save($request, 1);
+				$self->_callback($request);
+				$self->_update($request);
 			}
 			if ($request->is_awaiting && $info->is_pending) {
 				$request->set_status(Model::Request->STATUS_PENDING);
-				$self->request_repo->save($request, 1);
+				$self->_update($request);
 			}
 		}
 	}

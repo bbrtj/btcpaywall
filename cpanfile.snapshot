@@ -2042,6 +2042,17 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.31
       Test::More 0.62
       Test::NoWarnings 0.084
+  Mock-Sub-1.09
+    pathname: S/ST/STEVEB/Mock-Sub-1.09.tar.gz
+    provides:
+      Mock::Sub 1.09
+      Mock::Sub::Child 1.09
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Scalar::Util 0
+      Test::More 0
+      perl 5.006
   Module-Build-0.4231
     pathname: L/LE/LEONT/Module-Build-0.4231.tar.gz
     provides:
