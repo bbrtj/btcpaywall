@@ -5,7 +5,6 @@ use Object::Sub;
 use Model::Request;
 use Crypt::Misc qw(random_v4uuid);
 use DateTime;
-use DateTime::Duration;
 use DI;
 
 my $watcher = DI->get('request_watcher');
@@ -105,7 +104,7 @@ subtest 'callback failed' => sub {
 
 subtest 'timeout' => sub {
 	setup_mocks;
-	$model->set_ts(DateTime->now - DateTime::Duration->new(seconds => 2 * Model::Request->TTL));
+	$model->set_ts(DateTime->now->subtract(seconds => 2 * Model::Request->TTL));
 	$chain_pending = 1;
 	$chain_complete = 0;
 	$watcher->resolve;

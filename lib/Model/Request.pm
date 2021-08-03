@@ -4,7 +4,6 @@ use Moose;
 use Crypt::Misc qw(random_v4uuid);
 use Types;
 use DateTime;
-use DateTime::Duration;
 
 use header;
 
@@ -79,7 +78,7 @@ sub is_complete ($self)
 
 sub is_timed_out ($self)
 {
-	return $self->ts + DateTime::Duration->new(seconds => TTL) < DateTime->now;
+	return $self->ts->add(seconds => TTL) < DateTime->now;
 }
 
 __PACKAGE__->_register;
