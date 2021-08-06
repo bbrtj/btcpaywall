@@ -36,3 +36,11 @@ Set up a web server as a proxy for Mojolicious web server. See https://docs.mojo
 ### Firewall
 
 Set up a firewall of your choice to hide the Perl web server port (default 8080) from outside access.
+
+### Cron
+
+Cron needs to be set up to run the request handling action in the background:
+
+```
+* * * * * carton exec /path/to/script/btcpaywall autoresolve
+```
