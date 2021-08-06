@@ -57,7 +57,7 @@ sub resolve ($self)
 	for my $request ($unresolved->@*) {
 		$self->resolve_single($request);
 	}
-	return;
+	return scalar $unresolved->@*;
 }
 
 sub resolve_single ($self, $request)
