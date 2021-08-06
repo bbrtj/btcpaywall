@@ -26,8 +26,8 @@ sub test ($class, $sub)
 		DI->forget('db');
 
 		my $pg = Mojo::Pg->new->dsn($cloned->dsn)
-			->username($ENV{DB_USERNAME})
-			->password($ENV{DB_PASSWORD});
+			->username($ENV{DB_USER})
+			->password($ENV{DB_PASS});
 
 		my $db = Component::DB->new(env => $env, dbh => $pg);
 		DI->set('db', $db);

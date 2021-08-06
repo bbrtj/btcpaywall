@@ -17,7 +17,7 @@ sub get ($class, @args)
 
 sub set ($class, $name, $value, $replace = 0)
 {
-	if ($replace || !exists $class->_create->config->{$name}) {
+	if ($replace || !exists $class->_create->services->{$name}) {
 		$class->_create->set($name, $value);
 	}
 	return;
