@@ -24,7 +24,8 @@ sub create ($self)
 		$node->watch_address($address_service->get_address($model, 1));
 
 		$self->respond(1, $model->id);
-	} else {
+	}
+	else {
 		$self->respond(0, $form->errors);
 	}
 }

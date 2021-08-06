@@ -7,6 +7,6 @@ use header;
 
 has 'env' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Component::Env'],
+	isa => Types::InstanceOf ['Component::Env'],
 	required => 1,
 );

@@ -10,7 +10,7 @@ has 'rawenv' => (
 	is => 'ro',
 	isa => Types::HashRef,
 	default => sub {
-		\%ENV
+		\%ENV;
 	},
 );
 
@@ -20,7 +20,7 @@ sub BUILD ($self, @)
 	$self->rawenv->{CRYPTO_NETWORK} //= 'bitcoin';
 }
 
-sub getenv :lvalue ($self, $name)
+sub getenv : lvalue ($self, $name)
 {
 	my $rawenv = $self->rawenv;
 

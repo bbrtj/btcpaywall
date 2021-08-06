@@ -10,7 +10,7 @@ with 'Component::Role::HasEnv';
 
 has '_master_key' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Bitcoin::Crypto::Key::ExtPrivate'],
+	isa => Types::InstanceOf ['Bitcoin::Crypto::Key::ExtPrivate'],
 	lazy => 1,
 	default => sub ($self) {
 		my $key = path($self->env->getenv('MASTER_KEY'));
@@ -35,6 +35,6 @@ sub get_payment_address ($self, $account, $request, $compat = 0)
 	return $compat
 		? $public->get_compat_address
 		: $public->get_segwit_address
-	;
+		;
 }
 

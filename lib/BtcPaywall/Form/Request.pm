@@ -8,7 +8,7 @@ use Model::Request;
 
 use header;
 
-use constant _ts_treshold => 300; # 5 minutes
+use constant _ts_treshold => 300;    # 5 minutes
 
 has 'repository' => (
 	is => 'ro',
@@ -56,9 +56,10 @@ form_hook cleanup => sub ($self, $data) {
 		unless $data->{hash} eq $self->create_hash($data, $account->secret);
 };
 
-sub create_hash($self, $data, $secret)
+sub create_hash ($self, $data, $secret)
 {
-	return sha256_hex(join '//',
+	return sha256_hex(
+		join '//',
 		$data->{account_id},
 		$data->{amount},
 		$data->{items}->@*,

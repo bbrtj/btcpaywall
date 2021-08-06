@@ -18,7 +18,8 @@ sub paywall ($self, $compat = 0)
 	my ($model, $items);
 	try {
 		($model, $items) = $req_repo->get_with_items($uuid);
-	} catch ($e) {
+	}
+	catch ($e) {
 		$self->reply->not_found;
 		return;
 	}

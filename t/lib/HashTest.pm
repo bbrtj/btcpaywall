@@ -19,7 +19,7 @@ sub serialize ($self, $data, $secret)
 	);
 }
 
-sub serialize_callback($self, $data, $secret)
+sub serialize_callback ($self, $data, $secret)
 {
 	return (
 		$data->{account_id},

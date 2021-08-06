@@ -9,7 +9,7 @@ use header;
 
 has 'account_repo' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Repository::Account'],
+	isa => Types::InstanceOf ['Repository::Account'],
 	required => 1,
 );
 
@@ -33,7 +33,8 @@ sub run_callback ($self, $request)
 
 sub generate_hash ($self, $body, $secret)
 {
-	$body->{hash} = sha256_hex(join '//',
+	$body->{hash} = sha256_hex(
+		join '//',
 		$body->{account_id},
 		$body->{request_id},
 		$body->{ts},

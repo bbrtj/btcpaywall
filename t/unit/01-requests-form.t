@@ -9,13 +9,17 @@ use HashTest;
 my $test_client = 'c397e34f-e686-4d6c-8912-d139eb377c1b';
 my $test_secret = 'Uqn3USEcpttjin9Deqb4B8dFl291PUYi';
 my $test_time = time;
-my $repository_mock = Object::Sub->new({
-	get_by_id => sub {
-		Object::Sub->new({
-			secret => sub { $test_secret },
-		});
-	},
-});
+my $repository_mock = Object::Sub->new(
+	{
+		get_by_id => sub {
+			Object::Sub->new(
+				{
+					secret => sub { $test_secret },
+				}
+			);
+		},
+	}
+);
 
 my @data = (
 	[

@@ -33,19 +33,19 @@ sub find ($self, %params)
 		my $pvalue = $params{$pkey};
 
 		if (is_arrayref($pvalue)) {
-			$query->{"me.$pkey"} = { 'IN', $pvalue };
+			$query->{"me.$pkey"} = {'IN', $pvalue};
 		}
 		else {
 			$query->{"me.$pkey"} = $pvalue;
 		}
 	}
 
-	return [ map { $self->_model->from_result($_) } $rs->search($query)];
+	return [map { $self->_model->from_result($_) } $rs->search($query)];
 }
 
 sub save ($self, $model, $update = undef)
 {
-	(Types::InstanceOf[$self->_model])->assert_valid($model);
+	(Types::InstanceOf [$self->_model])->assert_valid($model);
 
 	my $type = $update ? 'update' : 'insert';
 	my $dbmodel = $self->db->dbc->resultset($self->_class)->new($model->serialize);

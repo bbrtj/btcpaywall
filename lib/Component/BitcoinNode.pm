@@ -16,7 +16,7 @@ with 'Component::Role::HasEnv';
 
 has 'rpc' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Bitcoin::RPC::Client'],
+	isa => Types::InstanceOf ['Bitcoin::RPC::Client'],
 	default => sub ($self) {
 		Bitcoin::RPC::Client->new(
 			user => $self->env->getenv('RPC_USERNAME'),
@@ -31,7 +31,8 @@ sub _get_balance ($self, $address, $blocks)
 {
 	my $txs = $self->rpc->listunspent($blocks, BLOCKS_NOLIMIT, [$address]);
 
-	return sum0 map { $_->{amount} * SATOSHI_PER_BITCOIN } $txs->@*;
+	return sum0 map { $_->{amount} * SATOSHI_PER_BITCOIN }
+	$txs->@*;
 }
 
 sub configure ($self)
@@ -59,7 +60,7 @@ sub check_payment ($self, $address, $amount, $blocks = 3)
 	return $balance >= $amount;
 }
 
-sub check_incorrect_payment($self, $address, $amount)
+sub check_incorrect_payment ($self, $address, $amount)
 {
 	my $balance = $self->_get_balance($address, 0);
 

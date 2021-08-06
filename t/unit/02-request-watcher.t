@@ -12,11 +12,13 @@ my $watcher = DI->get('request_watcher');
 my $chain_complete = 0;
 my $chain_incorrect = 0;
 my $chain_pending = 0;
-my $chain_state = Object::Sub->new({
-	is_complete => sub { $chain_complete },
-	is_incorrect => sub { $chain_incorrect },
-	is_pending => sub { $chain_pending },
-});
+my $chain_state = Object::Sub->new(
+	{
+		is_complete => sub { $chain_complete },
+		is_incorrect => sub { $chain_incorrect },
+		is_pending => sub { $chain_pending },
+	}
+);
 
 my $model = Model::Request->dummy->new;
 
@@ -50,7 +52,6 @@ subtest 'no blockchain change' => sub {
 	ok !$request_save_mock->called, 'model not saved ok';
 	is $model->status, Model::Request->STATUS_AWAITING, 'model status ok';
 };
-
 
 subtest 'blockchain pending' => sub {
 	setup_mocks;
@@ -115,7 +116,6 @@ subtest 'timeout' => sub {
 	ok $request_save_mock->called, 'model saved ok';
 	is $model->status, Model::Request->STATUS_TIMEOUT, 'model status ok';
 };
-
 
 done_testing;
 

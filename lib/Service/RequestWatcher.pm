@@ -8,19 +8,19 @@ use header;
 
 has 'address_service' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Service::Address'],
+	isa => Types::InstanceOf ['Service::Address'],
 	required => 1,
 );
 
 has 'callback_service' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Service::Callback'],
+	isa => Types::InstanceOf ['Service::Callback'],
 	required => 1,
 );
 
 has 'request_repo' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Repository::Request'],
+	isa => Types::InstanceOf ['Repository::Request'],
 	required => 1,
 );
 
