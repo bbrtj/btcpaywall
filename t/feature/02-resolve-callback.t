@@ -1,6 +1,5 @@
 use header -noclean;
 use Test::More;
-use Test::Mojo;
 use Mock::Sub;
 use Object::Sub;
 use Mojo::Server::Daemon;
@@ -30,7 +29,7 @@ my $secret = 'ahrchOEHUdATUdEuNOUhurAUdjqkqbA';
 
 my $server = Test::TCP->new(
 	code => sub ($port) {
-		my $callback_app = CallbackServer->new($secret);
+		my $callback_app = CallbackServer->new($secret, {mode => 'deployment'});
 		my $callback_server = Mojo::Server::Daemon->new(listen => ["http://*:$port"])->app($callback_app)->start;
 		Mojo::IOLoop->start;
 	},
