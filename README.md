@@ -27,6 +27,8 @@ This project requires Perl 5.32 (best managed by perlbrew: https://perlbrew.pl/)
 
 `carton exec hypnotoad script/btcpaywall` runs a standalone production web server for the application. By default, the server will listen on port 8080.
 
+Additionally, it needs to be set behind a supervisor that will make sure it runs persistently. Use any supervisor of your choice.
+
 See https://docs.mojolicious.org/Mojolicious/Guides/Cookbook#Hypnotoad for more info.
 
 ### Regular web server (Apache / Nginx)
