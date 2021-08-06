@@ -27,14 +27,6 @@ sub configure ($self)
 		level => 'error',
 	);
 	$self->log($log);
-
-	$self->helper(
-		db => sub { state $pg = DI->get('db')->dbh }
-	);
-
-	$self->helper(
-		dbc => sub { state $schema = DI->get('db')->dbc }
-	);
 }
 
 sub load_commands ($self)
