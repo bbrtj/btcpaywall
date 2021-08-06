@@ -4,6 +4,7 @@ use header;
 use Test::DB;
 use Mojo::Pg;
 use DI;
+use Component::DB;
 
 sub test ($class, $sub)
 {
@@ -28,7 +29,8 @@ sub test ($class, $sub)
 			->username($ENV{DB_USERNAME})
 			->password($ENV{DB_PASSWORD});
 
-		DI->get('db', dbh => $pg);
+		my $db = Component::DB->new(env => $env, dbh => $pg);
+		DI->set('db', $db);
 
 		$sub->();
 	}

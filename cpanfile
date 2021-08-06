@@ -22,3 +22,5 @@ requires 'Image::PNG::QRCode', 0;
 requires 'Bitcoin::RPC::Client', 0;
 requires 'Ref::Util', 0;
 requires 'Mock::Sub', 0;
+requires 'Test::TCP', 0;
+

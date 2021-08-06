@@ -18,3 +18,13 @@ sub serialize ($self, $data, $secret)
 		$secret
 	);
 }
+
+sub serialize_callback($self, $data, $secret)
+{
+	return (
+		$data->{account_id},
+		$data->{request_id},
+		$data->{ts},
+		$secret
+	);
+}

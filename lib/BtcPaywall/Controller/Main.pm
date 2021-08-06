@@ -11,6 +11,8 @@ sub paywall ($self, $compat = 0)
 {
 	state $req_repo = DI->get('requests_repository');
 	state $address_service = DI->get('address_service');
+	state $watcher = DI->get('request_watcher');
+
 	my $uuid = $self->param('uuid');
 
 	my ($model, $items);
@@ -19,6 +21,10 @@ sub paywall ($self, $compat = 0)
 	} catch ($e) {
 		$self->reply->not_found;
 		return;
+	}
+
+	if (!$model->is_complete && !$model->is_timed_out) {
+		$watcher->resolve_single($model);
 	}
 
 	my $address = $address_service->get_address($model, $compat);

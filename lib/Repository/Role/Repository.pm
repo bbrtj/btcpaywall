@@ -43,10 +43,16 @@ sub find ($self, %params)
 	return [ map { $self->_model->from_result($_) } $rs->search($query)];
 }
 
-sub save ($self, $model, $update = 0)
+sub save ($self, $model, $update = undef)
 {
 	(Types::InstanceOf[$self->_model])->assert_valid($model);
 
-	my $type = $update ? 'update' : 'create';
-	return $self->db->dbc->resultset($self->_class)->$type($model->serialize);
+	my $type = $update ? 'update' : 'insert';
+	my $dbmodel = $self->db->dbc->resultset($self->_class)->new($model->serialize);
+	if ($update) {
+		$dbmodel->in_storage(1);
+		$dbmodel->make_column_dirty($_) for $update->@*;
+	}
+	$dbmodel->$type;
+	return;
 }

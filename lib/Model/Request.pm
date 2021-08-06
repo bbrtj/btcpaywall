@@ -78,6 +78,11 @@ sub is_complete ($self)
 
 sub is_timed_out ($self)
 {
+	return $self->status eq STATUS_TIMEOUT;
+}
+
+sub check_timeout ($self)
+{
 	return $self->ts->add(seconds => TTL) < DateTime->now;
 }
 
