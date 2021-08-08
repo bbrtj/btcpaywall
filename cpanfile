@@ -10,7 +10,6 @@ requires 'Syntax::Keyword::Try', 0;
 requires 'Types::UUID', 0;
 requires 'Types::DateTime', 0;
 requires 'DateTime::Format::Pg', 0;
-requires 'Types::XSD::Lite', 0;
 requires 'Type::Libraries', 0;
 requires 'String::Random', 0;
 requires 'Data::Entropy', 0;

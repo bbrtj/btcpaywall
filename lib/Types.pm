@@ -4,7 +4,6 @@ use Type::Libraries;
 use Type::Tiny;
 use Types::Standard qw(Num);
 use Types::DateTime qw(DateTime Format);
-use Types::XSD::Lite qw(Base64Binary);
 
 use header;
 
@@ -29,4 +28,3 @@ __PACKAGE__->add_type($DateTime)->coercion->add_type_coercions(
 	Format ['Pg'],
 )->freeze;
 
-__PACKAGE__->add_type(Base64Binary);
