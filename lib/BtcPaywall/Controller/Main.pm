@@ -13,11 +13,11 @@ sub paywall ($self, $compat = 0)
 	state $address_service = DI->get('address_service');
 	state $watcher = DI->get('request_watcher');
 
-	my $uuid = $self->param('uuid');
+	my $id = $self->param('id');
 
 	my ($model, $items);
 	try {
-		($model, $items) = $req_repo->get_with_items($uuid);
+		($model, $items) = $req_repo->get_with_items($id);
 	}
 	catch ($e) {
 		$self->reply->not_found;

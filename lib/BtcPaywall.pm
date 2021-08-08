@@ -39,8 +39,8 @@ sub load_routes ($self)
 	my $r = $self->routes;
 
 	$r->post('/request/new')->to('requests#create');
-	$r->get('/paywall/compat/:uuid')->to('main#paywall_compat');
-	$r->get('/paywall/:uuid')->to('main#paywall');
+	$r->get('/paywall/compat/:id')->to('main#paywall_compat');
+	$r->get('/paywall/:id')->to('main#paywall');
 
 }
 

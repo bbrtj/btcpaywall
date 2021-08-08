@@ -3,6 +3,7 @@ package BtcPaywall::Command::migrate;
 use Mojo::Base 'Mojolicious::Command';
 use Getopt::Long qw(GetOptionsFromArray);
 use Mojo::File qw(curfile path);
+use DI;
 
 use header;
 
@@ -30,7 +31,9 @@ sub run ($self, @args)
 		"downall" => \$downall,
 	);
 
-	my $migrations = $self->app->db->migrations;
+	my $db = DI->get('db')->dbh;
+
+	my $migrations = $db->migrations;
 	my $migration_string = '';
 	foreach my $file (get_files) {
 		my $fileobj = path($file);

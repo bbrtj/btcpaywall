@@ -1,7 +1,6 @@
 package Model::Account;
 
 use Moose;
-use Crypt::Misc qw(random_v4uuid);
 use Types;
 use String::Random;
 use Data::Entropy::Algorithms qw(rand);
@@ -12,8 +11,9 @@ with 'Model';
 
 has 'id' => (
 	is => 'ro',
-	isa => Types::Uuid,
-	default => sub { random_v4uuid },
+	isa => Types::ULID,
+	coerce => 1,
+	default => sub { undef },
 );
 
 has 'account_index' => (

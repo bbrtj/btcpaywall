@@ -3,7 +3,6 @@ use Test::More;
 use Mock::Sub;
 use Object::Sub;
 use Model::Request;
-use Crypt::Misc qw(random_v4uuid);
 use DateTime;
 use DI;
 

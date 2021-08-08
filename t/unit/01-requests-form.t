@@ -6,7 +6,7 @@ use Data::Dumper;
 use lib 't/lib';
 use HashTest;
 
-my $test_client = 'c397e34f-e686-4d6c-8912-d139eb377c1b';
+my $test_client = '01FCK7X2BGS50Q86SR2ZQEDAM9';
 my $test_secret = 'Uqn3USEcpttjin9Deqb4B8dFl291PUYi';
 my $test_time = time;
 my $repository_mock = Object::Sub->new(

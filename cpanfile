@@ -7,7 +7,6 @@ requires 'DBIx::Class', 0;
 requires 'Import::Into', 0;
 requires 'true', 0;
 requires 'Syntax::Keyword::Try', 0;
-requires 'Types::UUID', 0;
 requires 'Types::DateTime', 0;
 requires 'DateTime::Format::Pg', 0;
 requires 'Type::Libraries', 0;
@@ -22,4 +21,5 @@ requires 'Bitcoin::RPC::Client', 0;
 requires 'Ref::Util', 0;
 requires 'Mock::Sub', 0;
 requires 'Test::TCP', 0;
+requires 'Data::ULID', 0;
 

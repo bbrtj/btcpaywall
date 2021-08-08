@@ -1,7 +1,6 @@
 package Model::Request;
 
 use Moose;
-use Crypt::Misc qw(random_v4uuid);
 use Types;
 use DateTime;
 
@@ -22,13 +21,14 @@ use constant TTL => 60 * 60 * 24 * 14;
 
 has 'id' => (
 	is => 'ro',
-	isa => Types::Uuid,
-	default => sub { random_v4uuid },
+	isa => Types::ULID,
+	coerce => 1,
+	default => sub { undef },
 );
 
 has 'account_id' => (
 	is => 'ro',
-	isa => Types::Uuid,
+	isa => Types::ULID,
 	required => 1,
 );
 

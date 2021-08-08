@@ -16,7 +16,7 @@ has 'repository' => (
 );
 
 form_field 'account_id' => (
-	type => Types::Uuid,
+	type => Types::ULID,
 	required => 1,
 );
 
