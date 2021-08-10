@@ -1,11 +1,42 @@
-% if ($model->is_complete) {
-	<b>Already paid</b>
-% }
-%= $model->amount
+% layout 'default';
 
-%= $address
+<div id="header">
+	<h1>You've been requested to pay <%= $model->amount %> Satoshi</h1>
+
+</div>
+
+<div>
+	% if ($model->is_complete) {
+		<b>Transaction is complete. Vendor has been notified of the purchase.</b>
+	% }
+	% if ($model->is_pending) {
+		<b>Transaction is pending. It will be complete once it is confirmed on the blockchain.</b>
+	% }
+</div>
+
 <img src="data:image/png;base64,<%= $png %>">
 
-% for my $item ($items->@*) {
-	%= $item
+<div>
+Use your wallet to transfer funds to
+<b>
+%= $address
+</b>
+</div>
+
+
+<div>
+	Purchase contents:
+	<ul>
+		% for my $item ($items->@*) {
+			<li>
+				%= $item
+			</li>
+		% }
+	</ul>
+</div>
+
+% if ($segwit) {
+	<a href="/paywall/compat/<%= $model->id %>">Switch to SegWit compatibility address</a>
+% } else {
+	<a href="/paywall/<%= $model->id %>">Switch to SegWit native address</a>
 % }

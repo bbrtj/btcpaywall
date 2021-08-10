@@ -34,7 +34,8 @@ sub paywall ($self, $compat = 0)
 		items => $items,
 		address => $address,
 		address_compat => $compat,
-		png => encode_base64(qrpng(text => $address, quiet => 0), ''),
+		png => encode_base64(qrpng(text => $address, scale => 7, quiet => 2), ''),
+		segwit => $self->stash('segwit') // 1,
 	);
 
 	$self->render('main/paywall');
@@ -42,5 +43,6 @@ sub paywall ($self, $compat = 0)
 
 sub paywall_compat ($self)
 {
+	$self->stash(segwit => 0);
 	$self->paywall(-compat);
 }

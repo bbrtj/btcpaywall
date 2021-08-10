@@ -1,0 +1,22 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	background: #ffffff;
+	color: #4d4d4d;
+	padding: 0;
+	margin: 0;
+}
+
+#page-content {
+	padding: 10px;
+}
+
+#header {
+	background: #f7931a;
+	color: #ffffff;
+	overflow: hidden;
+	position: relative;
+}
+
