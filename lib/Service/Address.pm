@@ -43,15 +43,15 @@ sub get_request_blockchain_info ($self, $request)
 		{
 			is_complete => sub {
 				$self->node->check_payment($address, $request->amount)
-					&& $self->node->check_payment($address_compat, $request->amount);
+					|| $self->node->check_payment($address_compat, $request->amount);
 			},
 			is_incorrect => sub {
 				$self->node->check_incorrect_payment($address, $request->amount)
-					&& $self->node->check_incorrect_payment($address_compat, $request->amount);
+					|| $self->node->check_incorrect_payment($address_compat, $request->amount);
 			},
 			is_pending => sub {
 				$self->node->check_unconfirmed_payment($address, $request->amount)
-					&& $self->node->check_unconfirmed_payment($address_compat, $request->amount);
+					|| $self->node->check_unconfirmed_payment($address_compat, $request->amount);
 			},
 		}
 	);
