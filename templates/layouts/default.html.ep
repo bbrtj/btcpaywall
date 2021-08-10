@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="/styles.css">
+	<meta charset="UTF-8">
+	<script src="/dist/paywall.min.js"></script>
+	<title>Cryptocurrency payment requested</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div id="page-content">
+	<div class="container">
 		%= content
 	</div>
 </body>

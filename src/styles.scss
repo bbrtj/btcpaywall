@@ -1,0 +1,21 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+html, body {
+	background: #ffffff;
+	color: #4d4d4d;
+}
+
+#content {
+	border: 3px solid #f7931a;
+	border-radius: 0 0 5px 5px;
+}
+
+#header {
+	background: #f7931a;
+	color: #ffffff;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 5px 5px 0 0;
+}
+
+

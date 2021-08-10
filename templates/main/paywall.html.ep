@@ -1,42 +1,77 @@
 % layout 'default';
 
-<div id="header">
-	<h1>You've been requested to pay <%= $model->amount %> Satoshi</h1>
+<header id="header" class="text-center py-2 mt-3">
+	<h1>Bitcoin payment of <%= $model->amount %> Satoshi</h1>
+</header>
 
-</div>
+<div id="content" class="px-3 py-2">
 
-<div>
-	% if ($model->is_complete) {
-		<b>Transaction is complete. Vendor has been notified of the purchase.</b>
-	% }
-	% if ($model->is_pending) {
-		<b>Transaction is pending. It will be complete once it is confirmed on the blockchain.</b>
-	% }
-</div>
-
-<img src="data:image/png;base64,<%= $png %>">
-
-<div>
-Use your wallet to transfer funds to
-<b>
-%= $address
-</b>
-</div>
-
-
-<div>
-	Purchase contents:
-	<ul>
-		% for my $item ($items->@*) {
-			<li>
-				%= $item
-			</li>
+% unless ($model->is_awaiting) {
+<div class="row">
+	<div class="col-md-12">
+		% if ($model->is_complete) {
+			<div class="alert alert-success my-2" role="alert">
+				<b>Transaction is complete. Vendor has been notified of the purchase.</b>
+			</div>
 		% }
-	</ul>
+		% elsif ($model->is_callback) {
+			<div class="alert alert-warning my-2" role="alert">
+				<b>Transaction is complete, but the vendor did not respond to transaction notification. If this does not change within an hour, try contacting the vendor.</b>
+			</div>
+		% }
+		% elsif ($model->is_pending) {
+			<div class="alert alert-info my-2" role="alert">
+				<b>Transaction is pending. It will be complete once it is confirmed on the blockchain.</b>
+			</div>
+		% }
+	</div>
+</div>
+% }
+
+<div class="row">
+	<div class="col-md-6">
+		<h3>
+			Transfer <%= $model->amount %> sat to:
+		</h3>
+		<p>
+			<img src="data:image/png;base64,<%= $png %>">
+		</p>
+
+		<p>
+			<b>
+			%= $address
+			</b>
+		</p>
+	</div>
+
+
+	<div class="col-md-6">
+		<h3>
+			Vendor name:
+		</h3>
+		<p>
+			# TODO
+		</p>
+		<h3>
+			Purchase contents:
+		</h3>
+		<ul>
+			% for my $item ($items->@*) {
+				<li>
+					%= $item
+				</li>
+			% }
+		</ul>
+	</div>
+</div>
 </div>
 
-% if ($segwit) {
-	<a href="/paywall/compat/<%= $model->id %>">Switch to SegWit compatibility address</a>
-% } else {
-	<a href="/paywall/<%= $model->id %>">Switch to SegWit native address</a>
-% }
+<div class="row">
+	<div class="col-md-12">
+		% if ($segwit) {
+			<a href="/paywall/compat/<%= $model->id %>">Switch to SegWit compatibility address</a>
+		% } else {
+			<a href="/paywall/<%= $model->id %>">Switch to SegWit native address</a>
+		% }
+	</div>
+</div>

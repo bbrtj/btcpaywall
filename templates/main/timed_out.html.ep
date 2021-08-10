@@ -1,0 +1,9 @@
+% layout 'default';
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-danger my-2" role="alert">
+			<b>This payment request has timed out.</b>
+		</div>
+	</div>
+</div>

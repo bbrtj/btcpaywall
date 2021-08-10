@@ -24,21 +24,27 @@ sub paywall ($self, $compat = 0)
 		return;
 	}
 
-	if (!$model->is_complete && !$model->is_timed_out) {
-		$watcher->resolve_single($model);
+	if ($model->is_timed_out) {
+		$self->render('main/timed_out');
+		$self->rendered(410);
 	}
+	else {
+		if (!$model->is_complete) {
+			$watcher->resolve_single($model);
+		}
 
-	my $address = $address_service->get_address($model, $compat);
-	$self->stash(
-		model => $model,
-		items => $items,
-		address => $address,
-		address_compat => $compat,
-		png => encode_base64(qrpng(text => $address, scale => 7, quiet => 2), ''),
-		segwit => $self->stash('segwit') // 1,
-	);
+		my $address = $address_service->get_address($model, $compat);
+		$self->stash(
+			model => $model,
+			items => $items,
+			address => $address,
+			address_compat => $compat,
+			png => encode_base64(qrpng(text => $address, scale => 7, quiet => 0), ''),
+			segwit => $self->stash('segwit') // 1,
+		);
 
-	$self->render('main/paywall');
+		$self->render('main/paywall');
+	}
 }
 
 sub paywall_compat ($self)
