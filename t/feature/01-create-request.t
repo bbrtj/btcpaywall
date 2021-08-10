@@ -23,7 +23,7 @@ DatabaseTest->test(
 		my $raw_items = ['test item', 'another item'];
 		my %data = (
 			account_id => $acc->id,
-			amount => 999,
+			amount => 9999,
 			items => $raw_items,
 			ts => $ts,
 		);
@@ -37,7 +37,7 @@ DatabaseTest->test(
 		my ($request, $items) = DI->get('requests_repository')->get_with_items($request_id);
 
 		is $request->account_id, $acc->id, 'account ok';
-		is $request->amount, 999, 'amount ok';
+		is $request->amount, 9999, 'amount ok';
 		is $request->ts, Types::DateTime->coerce($ts), 'timestamp ok';
 
 		is_deeply $items, $raw_items, 'items ok';

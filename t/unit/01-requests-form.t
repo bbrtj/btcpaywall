@@ -26,10 +26,10 @@ my @data = (
 		1,
 		{
 			account_id => $test_client,
-			amount => 500,
+			amount => 6000,
 			items => ['some item'],
 			ts => $test_time - 30,
-			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time - 30, $test_secret)
+			hash => HashTest->create_hash($test_client, 6000, 'some item', $test_time - 30, $test_secret)
 		},
 		'basic case ok'
 	],
@@ -37,10 +37,10 @@ my @data = (
 		1,
 		{
 			account_id => $test_client,
-			amount => 500,
+			amount => 6000,
 			items => ['i1', 'i2'],
 			ts => $test_time - 60,
-			hash => HashTest->create_hash($test_client, 500, 'i1', 'i2', $test_time - 60, $test_secret)
+			hash => HashTest->create_hash($test_client, 6000, 'i1', 'i2', $test_time - 60, $test_secret)
 		},
 		'two items are ok'
 	],
@@ -48,10 +48,10 @@ my @data = (
 		0,
 		{
 			account_id => $test_client,
-			amount => 500,
+			amount => 6000,
 			items => ['some item'],
 			ts => $test_time - 301,
-			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time - 301, $test_secret)
+			hash => HashTest->create_hash($test_client, 6000, 'some item', $test_time - 301, $test_secret)
 		},
 		'too old ok'
 	],
@@ -59,10 +59,10 @@ my @data = (
 		0,
 		{
 			account_id => $test_client,
-			amount => 500,
+			amount => 6000,
 			items => ['some item'],
 			ts => $test_time + 2,
-			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time + 2, $test_secret)
+			hash => HashTest->create_hash($test_client, 6000, 'some item', $test_time + 2, $test_secret)
 		},
 		'timestamp from the future ok'
 	],
@@ -70,10 +70,10 @@ my @data = (
 		0,
 		{
 			account_id => $test_client,
-			amount => 500,
+			amount => 6000,
 			items => [],
 			ts => $test_time - 30,
-			hash => HashTest->create_hash($test_client, 500, $test_time - 30, $test_secret)
+			hash => HashTest->create_hash($test_client, 6000, $test_time - 30, $test_secret)
 		},
 		'no items at all ok'
 	],
@@ -81,10 +81,10 @@ my @data = (
 		0,
 		{
 			account_id => $test_client,
-			amount => 500,
+			amount => 6000,
 			items => ['some item'],
 			ts => $test_time - 30,
-			hash => HashTest->create_hash($test_client, 500, 'some item', $test_time - 30, 'this-is-a-wrong-secret')
+			hash => HashTest->create_hash($test_client, 6000, 'some item', $test_time - 30, 'this-is-a-wrong-secret')
 		},
 		'wrong secret ok'
 	],
@@ -92,12 +92,12 @@ my @data = (
 		0,
 		{
 			account_id => $test_client,
-			amount => 0,
+			amount => 3000,
 			items => ['some item'],
 			ts => $test_time - 30,
-			hash => HashTest->create_hash($test_client, 0, 'some item', $test_time - 30, $test_secret)
+			hash => HashTest->create_hash($test_client, 3000, 'some item', $test_time - 30, $test_secret)
 		},
-		'non-positive amount ok'
+		'too small amount ok'
 	],
 );
 

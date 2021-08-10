@@ -45,7 +45,7 @@ DatabaseTest->test(
 
 		my $req = Model::Request->new(
 			account_id => $acc->id,
-			amount => 999,
+			amount => 9999,
 			ts => time - 50,
 		);
 

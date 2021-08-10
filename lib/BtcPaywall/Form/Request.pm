@@ -9,6 +9,7 @@ use Model::Request;
 use header;
 
 use constant _ts_treshold => 300;    # 5 minutes
+use constant MINIMUM_AMOUNT => 5460;
 
 has 'repository' => (
 	is => 'ro',
@@ -21,7 +22,7 @@ form_field 'account_id' => (
 );
 
 form_field 'amount' => (
-	type => Types::PositiveInt,
+	type => Types::PositiveInt->where(q{ $_ >= } . MINIMUM_AMOUNT),
 	required => 1,
 );
 
