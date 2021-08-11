@@ -5,12 +5,12 @@ use Bitcoin::RPC::Client;
 use Types;
 use Mojo::JSON qw(true false);
 use List::Util qw(sum0);
+use Constants;
 
 use header;
 
 use constant WALLET_NAME => 'paywall_wallet.dat';
 use constant BLOCKS_NOLIMIT => 9999999;
-use constant SATOSHI_PER_BITCOIN => 1_0000_0000;
 
 with 'Component::Role::HasEnv';
 
@@ -31,7 +31,7 @@ sub _get_balance ($self, $address, $blocks)
 {
 	my $txs = $self->rpc->listunspent($blocks, BLOCKS_NOLIMIT, [$address]);
 
-	return sum0 map { $_->{amount} * SATOSHI_PER_BITCOIN }
+	return sum0 map { $_->{amount} * Constants::SATOSHI_PER_BITCOIN }
 	$txs->@*;
 }
 

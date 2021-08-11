@@ -4,6 +4,7 @@ use Mojo::Base 'Mojolicious::Controller';
 use DI;
 use Image::PNG::QRCode 'qrpng';
 use MIME::Base64;
+use Helpers;
 
 use header;
 

@@ -51,16 +51,17 @@
 
 	<div class="col-md-6">
 		<h3>
-			Transfer <%= $model->amount %> sat to:
+			Transfer <%= Helpers::satoshi_to_bitcoin($model->amount) %> Ƀ to:
 		</h3>
-		<p>
-			<img src="data:image/png;base64,<%= $png %>">
-		</p>
 
 		<p>
 			<b>
 			%= $address
 			</b>
+		</p>
+
+		<p>
+			<img src="data:image/png;base64,<%= $png %>">
 		</p>
 	</div>
 
