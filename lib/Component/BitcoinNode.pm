@@ -54,7 +54,7 @@ sub check_unconfirmed_payment ($self, $address, $amount)
 	return $self->check_payment($address, $amount, 0);
 }
 
-sub check_payment ($self, $address, $amount, $blocks = 3)
+sub check_payment ($self, $address, $amount, $blocks = $self->env->getenv('TRANSACTION_REQUIRED_CONFIRMATIONS'))
 {
 	my $balance = $self->_get_balance($address, $blocks);
 	return $balance >= $amount;
