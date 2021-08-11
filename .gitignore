@@ -2,7 +2,6 @@
 /local
 /node_modules
 /.env
-/public/dist
 /master.key
 /logs/*
 !/logs/.keep
