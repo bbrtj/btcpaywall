@@ -56,7 +56,7 @@
 
 		<p>
 			<b>
-			%= $address
+			%= Helpers::format_address($address)
 			</b>
 		</p>
 
