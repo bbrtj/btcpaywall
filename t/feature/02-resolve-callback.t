@@ -39,6 +39,7 @@ DatabaseTest->test(
 	sub {
 		my $port = $server->port;
 		my $acc = Model::Account->new(
+			name => 'Test vendor',
 			callback_uri => "127.0.0.1:$port/cb",
 			secret => $secret,
 		);

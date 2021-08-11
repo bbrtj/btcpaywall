@@ -11,9 +11,10 @@ has description => 'add a new API client';
 # Usage message from SYNOPSIS
 has usage => sub ($self) { $self->extract_usage };
 
-sub run ($self, $uri, @args)
+sub run ($self, $name, $uri, @args)
 {
 	my $model = Model::Account->new(
+		name => $name,
 		callback_uri => $uri
 	);
 	DI->get('accounts_repository')->save($model);
@@ -25,4 +26,4 @@ sub run ($self, $uri, @args)
 __END__
 =head1 SYNOPSIS
 
-	Usage: APPLICATION add-client [CALLBACK URI]
+	Usage: APPLICATION add-client [NAME] [CALLBACK URI]

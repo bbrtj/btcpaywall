@@ -16,6 +16,12 @@ has 'id' => (
 	default => sub { undef },
 );
 
+has 'name' => (
+	is => 'ro',
+	isa => Types::Str,
+	required => 1,
+);
+
 has 'account_index' => (
 	is => 'ro',
 	isa => Types::PositiveOrZeroInt,

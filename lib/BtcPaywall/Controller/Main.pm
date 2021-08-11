@@ -10,6 +10,7 @@ use header;
 sub paywall ($self, $compat = 0)
 {
 	state $req_repo = DI->get('requests_repository');
+	state $acc_repo = DI->get('accounts_repository');
 	state $address_service = DI->get('address_service');
 	state $watcher = DI->get('request_watcher');
 
@@ -29,6 +30,8 @@ sub paywall ($self, $compat = 0)
 		$self->rendered(410);
 	}
 	else {
+		my $account = $acc_repo->get_by_id($model->account_id);
+
 		if (!$model->is_complete) {
 			$watcher->resolve_single($model);
 		}
@@ -36,6 +39,7 @@ sub paywall ($self, $compat = 0)
 		my $address = $address_service->get_address($model, $compat);
 		$self->stash(
 			model => $model,
+			account => $account,
 			items => $items,
 			address => $address,
 			address_compat => $compat,

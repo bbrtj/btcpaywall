@@ -50,7 +50,7 @@
 			Vendor name:
 		</h3>
 		<p>
-			# TODO
+			%= $account->name
 		</p>
 		<h3>
 			Purchase contents:
