@@ -25,8 +25,10 @@ sub get_by_id ($self, $id, $raw = 0, %options)
 
 sub raw_find ($self, $query, $params = {})
 {
-	return [$self->db->dbc->resultset($self->_class)
-		->search($query, $params)];
+	return [
+		$self->db->dbc->resultset($self->_class)
+			->search($query, $params)
+	];
 }
 
 sub save ($self, $model, $update = undef)

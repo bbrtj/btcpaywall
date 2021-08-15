@@ -49,6 +49,9 @@ sub find ($self, %params)
 		}
 	}
 
-	return [map { $self->_create_from_result($_) } $self->request_repo->raw_find($query, {prefetch => [qw(items account)]})->@*];
+	return [
+		map { $self->_create_from_result($_) }
+			$self->request_repo->raw_find($query, {prefetch => [qw(items account)]})->@*
+	];
 }
 

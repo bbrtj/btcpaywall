@@ -83,7 +83,8 @@ my @data = (
 			amount => 6000,
 			items => ['some item'],
 			ts => $test_time - 30,
-			hash => HashTest->create_hash($test_client, 6000, 'some item', $test_time - 30, 'this-is-a-wrong-secret')
+			hash =>
+				HashTest->create_hash($test_client, 6000, 'some item', $test_time - 30, 'this-is-a-wrong-secret')
 		},
 		'wrong secret ok'
 	],

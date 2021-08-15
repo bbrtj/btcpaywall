@@ -18,7 +18,7 @@ has 'repository' => (
 
 has 'account' => (
 	is => 'rw',
-	isa => Types::Maybe[Types::InstanceOf['Model::Account']],
+	isa => Types::Maybe [Types::InstanceOf ['Model::Account']],
 );
 
 form_field 'account_id' => (

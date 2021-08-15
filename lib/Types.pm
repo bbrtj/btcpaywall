@@ -32,7 +32,7 @@ __PACKAGE__->add_type($DateTime)->coercion->add_type_coercions(
 # TODO: reduced alphabet
 my $ULID = Type::Tiny->new(
 	name => 'ULID',
-	parent => (StrLength[26])->where(q{ /\A[0-9a-zA-Z]+\z/ }),
+	parent => (StrLength [26])->where(q{ /\A[0-9a-zA-Z]+\z/ }),
 );
 
 __PACKAGE__->add_type($ULID)->coercion->add_type_coercions(

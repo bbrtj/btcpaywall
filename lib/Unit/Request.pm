@@ -7,18 +7,18 @@ use header;
 
 has 'request' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Model::Request'],
+	isa => Types::InstanceOf ['Model::Request'],
 	required => 1,
 );
 
 has 'account' => (
 	is => 'ro',
-	isa => Types::InstanceOf['Model::Account'],
+	isa => Types::InstanceOf ['Model::Account'],
 	required => 1,
 );
 
 has 'items' => (
 	is => 'ro',
-	isa => Types::ArrayRef[Types::Str],
+	isa => Types::ArrayRef [Types::Str],
 	required => 1,
 );
