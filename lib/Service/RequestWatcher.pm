@@ -18,6 +18,12 @@ has 'callback_service' => (
 	required => 1,
 );
 
+has 'request_unit_repo' => (
+	is => 'ro',
+	isa => Types::InstanceOf ['Repository::Unit::Request'],
+	required => 1,
+);
+
 has 'request_repo' => (
 	is => 'ro',
 	isa => Types::InstanceOf ['Repository::Request'],
@@ -26,7 +32,8 @@ has 'request_repo' => (
 
 sub get_unresolved_requests ($self)
 {
-	$self->request_repo->find(
+	# returns full request units
+	$self->request_unit_repo->find(
 		status => [
 			Model::Request->STATUS_AWAITING,
 			Model::Request->STATUS_PENDING,
@@ -35,13 +42,13 @@ sub get_unresolved_requests ($self)
 	);
 }
 
-sub _callback ($self, $request)
+sub _callback ($self, $request_unit)
 {
-	if ($self->callback_service->run_callback($request)) {
-		$request->set_status(Model::Request->STATUS_COMPLETE);
+	if ($self->callback_service->run_callback($request_unit)) {
+		$request_unit->request->set_status(Model::Request->STATUS_COMPLETE);
 	}
 	else {
-		$request->set_status(Model::Request->STATUS_CALLBACK_FAILED);
+		$request_unit->request->set_status(Model::Request->STATUS_CALLBACK_FAILED);
 	}
 }
 
@@ -54,28 +61,30 @@ sub resolve ($self)
 {
 	my $unresolved = $self->get_unresolved_requests;
 
-	for my $request ($unresolved->@*) {
-		$self->resolve_single($request);
+	for my $request_unit ($unresolved->@*) {
+		$self->resolve_single($request_unit);
 	}
 	return scalar $unresolved->@*;
 }
 
-sub resolve_single ($self, $request)
+sub resolve_single ($self, $request_unit)
 {
+	my $request = $request_unit->request;
+
 	if ($request->check_timeout) {
 		$request->set_status(Model::Request->STATUS_TIMEOUT);
 		$self->_update($request);
 	}
 	elsif ($request->is_callback) {
-		$self->_callback($request);
+		$self->_callback($request_unit);
 		$self->_update($request);
 	}
 	else {
-		my $info = $self->address_service->get_request_blockchain_info($request);
+		my $info = $self->address_service->get_request_blockchain_info($request_unit);
 
 		# TODO: handle incorrect amount
 		if (($request->is_pending || $request->is_awaiting) && $info->is_complete) {
-			$self->_callback($request);
+			$self->_callback($request_unit);
 			$self->_update($request);
 		}
 		if ($request->is_awaiting && $info->is_pending) {

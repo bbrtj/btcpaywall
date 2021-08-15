@@ -1,6 +1,7 @@
 use header -noclean;
 use Test::More;
 use Object::Sub;
+use Model::Account;
 use BtcPaywall::Form::Request;
 use Data::Dumper;
 use lib 't/lib';
@@ -12,10 +13,8 @@ my $test_time = time;
 my $repository_mock = Object::Sub->new(
 	{
 		get_by_id => sub {
-			Object::Sub->new(
-				{
-					secret => sub { $test_secret },
-				}
+			Model::Account->dummy->new(
+				secret => $test_secret
 			);
 		},
 	}

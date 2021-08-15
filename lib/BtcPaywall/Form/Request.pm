@@ -16,6 +16,11 @@ has 'repository' => (
 	default => sub { DI->get('accounts_repository') },
 );
 
+has 'account' => (
+	is => 'rw',
+	isa => Types::Maybe[Types::InstanceOf['Model::Account']],
+);
+
 form_field 'account_id' => (
 	type => Types::ULID,
 	required => 1,
@@ -48,13 +53,16 @@ form_hook cleanup => sub ($self, $data) {
 	$self->add_error(ts => 'timestamp timed out')
 		if time < $data->{ts} || time - $data->{ts} > _ts_treshold;
 
-	my $account = $self->repository->get_by_id($data->{account_id});
-
-	$self->add_error(account_id => 'unknown account id')
-		unless defined $account;
+	try {
+		$self->account($self->repository->get_by_id($data->{account_id}));
+	}
+	catch ($e) {
+		$self->add_error(account_id => 'unknown account id');
+		return;
+	}
 
 	$self->add_error(hash => 'incorrect hash')
-		unless $data->{hash} eq $self->create_hash($data, $account->secret);
+		unless $data->{hash} eq $self->create_hash($data, $self->account->secret);
 };
 
 sub create_hash ($self, $data, $secret)
@@ -72,4 +80,13 @@ sub create_hash ($self, $data, $secret)
 sub to_model ($self)
 {
 	return Model::Request->new($self->fields);
+}
+
+sub to_unit ($self)
+{
+	return Unit::Request->new(
+		request => $self->to_model,
+		items => $self->fields->{items},
+		account => $self->account,
+	);
 }

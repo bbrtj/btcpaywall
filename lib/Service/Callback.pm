@@ -7,24 +7,17 @@ use Mojo::UserAgent;
 
 use header;
 
-has 'account_repo' => (
-	is => 'ro',
-	isa => Types::InstanceOf ['Repository::Account'],
-	required => 1,
-);
-
-sub run_callback ($self, $request)
+sub run_callback ($self, $request_unit)
 {
-	my $account = $self->account_repo->get_by_id($request->account_id);
-	my $uri = $account->callback_uri;
+	my $uri = $request_unit->account->callback_uri;
 
 	my $body = {
-		account_id => $account->id,
-		request_id => $request->id,
+		account_id => $request_unit->account->id,
+		request_id => $request_unit->request->id,
 		ts => time,
 	};
 
-	$self->generate_hash($body, $account->secret);
+	$self->generate_hash($body, $request_unit->account->secret);
 
 	my $ua = Mojo::UserAgent->new;
 	my $tx = $ua->post($uri => json => $body);

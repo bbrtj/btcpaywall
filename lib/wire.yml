@@ -31,13 +31,17 @@ accounts_repository:
         db:
             $ref: db
 
+requests_unit_repository:
+    class: Repository::Unit::Request
+    args:
+        request_repo:
+            $ref: requests_repository
+
 # services
 
 address_service:
     class: Service::Address
     args:
-        account_repo:
-            $ref: accounts_repository
         master_key:
             $ref: master_key
         node:
@@ -45,9 +49,6 @@ address_service:
 
 callback_service:
     class: Service::Callback
-    args:
-        account_repo:
-            $ref: accounts_repository
 
 request_watcher:
     class: Service::RequestWatcher
@@ -56,5 +57,7 @@ request_watcher:
             $ref: address_service
         request_repo:
             $ref: requests_repository
+        request_unit_repo:
+            $ref: requests_unit_repository
         callback_service:
             $ref: callback_service

@@ -3,6 +3,7 @@ use Test::More;
 use Mock::Sub;
 use Object::Sub;
 use Model::Request;
+use Model::Account;
 use DateTime;
 use DI;
 
@@ -20,12 +21,18 @@ my $chain_state = Object::Sub->new(
 );
 
 my $model = Model::Request->dummy->new;
+my $account = Model::Account->dummy->new;
+my $unit = Unit::Request->new(
+	request => $model,
+	account => $account,
+	items => ['item']
+);
 
 my $mock = Mock::Sub->new;
 my @mock_subs = (
 	$mock->mock('Service::Address::get_request_blockchain_info'),
 	$mock->mock('Service::Callback::run_callback'),
-	$mock->mock('Repository::Request::find'),
+	$mock->mock('Repository::Unit::Request::find'),
 	$mock->mock('Repository::Request::save'),
 );
 my ($chain_info_mock, $run_callback_mock, $request_find_mock, $request_save_mock) = @mock_subs;
@@ -36,7 +43,7 @@ sub setup_mocks
 
 	$chain_info_mock->return_value($chain_state);
 	$run_callback_mock->return_value(1);
-	$request_find_mock->return_value([$model]);
+	$request_find_mock->return_value([$unit]);
 	$request_save_mock->return_value(1);
 }
 

@@ -10,38 +10,33 @@ use header;
 
 sub paywall ($self, $compat = 0)
 {
-	state $req_repo = DI->get('requests_repository');
-	state $acc_repo = DI->get('accounts_repository');
+	state $repo = DI->get('requests_unit_repository');
 	state $address_service = DI->get('address_service');
 	state $watcher = DI->get('request_watcher');
 
 	my $id = $self->param('id');
 
-	my ($model, $items);
+	my $unit;
 	try {
-		($model, $items) = $req_repo->get_with_items($id);
+		$unit = $repo->get_by_id($id);
 	}
 	catch ($e) {
 		$self->reply->not_found;
 		return;
 	}
 
-	if ($model->is_timed_out) {
+	if ($unit->request->is_timed_out) {
 		$self->render('main/timed_out');
 		$self->rendered(410);
 	}
 	else {
-		my $account = $acc_repo->get_by_id($model->account_id);
-
-		if (!$model->is_complete) {
-			$watcher->resolve_single($model);
+		if (!$unit->request->is_complete) {
+			$watcher->resolve_single($unit);
 		}
 
-		my $address = $address_service->get_address($model, $compat);
+		my $address = $address_service->get_address($unit, $compat);
 		$self->stash(
-			model => $model,
-			account => $account,
-			items => $items,
+			unit => $unit,
 			address => $address,
 			address_compat => $compat,
 			png => encode_base64(qrpng(text => $address, scale => 7, quiet => 0), ''),
