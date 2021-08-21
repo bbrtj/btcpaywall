@@ -23,6 +23,8 @@ Where:
 
 Each service registered as a client must keep track of who bought what. After the payment is complete and the callback resource responded with HTTP 2XX status, the job of the paywall system is done.
 
+Note that payments for each client will still end up in the same Bitcoin HD wallet. This means that all clients should still be the same person or organization, but can be a different service.
+
 ### Payment requests
 The payment server accepts payment requests through an API call. For a request to be validated, it much identify itself as one of the clients present in the server's database.
 
@@ -74,6 +76,8 @@ The response of this action will be a JSON encoded object with following keys:
 
 Where `data` will contain the new request ID if the status is `true`, or an array of request errors if the status is `false`.
 
+After making an API call and obtaining requests' identifier, it should be saved locally and the user can be redirected to `/paywall/<request_id>` page, where he will see the paywall.
+
 ### Client authentication
 Once the client account is created, the secret key must be used to create hash tokens for payment request creation API. The procedure to create a valid hash is as follows:
 
@@ -110,7 +114,7 @@ Where the `~` infix operator joins the strings with two characters `//` in betwe
 After checking that all the data is valid, and that the hash created using client's secret matches, the given `request_id` should be marked as paid for, and proper resources should be granted to the user who is associated with that request. HTTP 2XX status should be returned from the action, to prevent the payment server from querying the callback URL. Returning anything else than HTTP 2XX will cause the payment server to retry the request every minute.
 
 ## Installation
-This project requires Perl 5.32 (best managed by perlbrew: https://perlbrew.pl/), PostgreSQL and bitcoind to run properly.
+This project requires Perl 5.32, PostgreSQL and bitcoind to run properly.
 
 ### bitcoind setup
 1. Install bitcoind
@@ -154,3 +158,4 @@ Cron needs to be set up to run the request handling action in the background:
 ```
 * * * * * carton exec /path/to/script/btcpaywall autoresolve
 ```
+
