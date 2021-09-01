@@ -29,7 +29,7 @@ has 'rpc' => (
 
 sub _get_balance ($self, $address, $blocks)
 {
-	my $txs = $self->rpc->listunspent($blocks, BLOCKS_NOLIMIT, [$address]);
+	my $txs = $self->rpc->listunspent(0+ $blocks, BLOCKS_NOLIMIT, [$address]);
 
 	return sum0 map { $_->{amount} * Constants::SATOSHI_PER_BITCOIN }
 	$txs->@*;
