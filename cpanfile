@@ -22,4 +22,5 @@ requires 'Ref::Util', 0;
 requires 'Mock::Sub', 0;
 requires 'Test::TCP', 0;
 requires 'Data::ULID', 0;
+requires 'Math::BigInt', 1.999823;
 
