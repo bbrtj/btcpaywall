@@ -11,7 +11,7 @@
 	<div class="col-md-12">
 		% if ($unit->request->is_complete) {
 			<div class="alert alert-success my-2" role="alert">
-				<b>Transaction is complete. Vendor has been notified of the purchase.</b>
+				<b>Transaction is complete. Vendor has been notified of the purchase. You can now <a href="<%= $unit->account->callback_uri %>?id=<%= $unit->request->id %>">go back to vendor's site</a>.</b>
 			</div>
 		% }
 		% elsif ($unit->request->is_callback) {
@@ -69,6 +69,9 @@
 </div>
 
 <div class="row">
+	<div class="col-md-12">
+		<a href="<%= $unit->account->callback_uri %>?id=<%= $unit->request->id %>">Back to vendor's page</a>
+	</div>
 	<div class="col-md-12">
 		% if ($segwit) {
 			<a href="/paywall/compat/<%= $unit->request->id %>">Switch to SegWit compatibility address</a>

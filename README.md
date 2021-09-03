@@ -19,11 +19,19 @@ carton exec script/btcpaywall add-client <name> <callback address>
 
 Where:
 - `<name>` is a human-readable name of the client, that will be shown on payment pages to help end users identify the transaction
-- `<callback address>` is a full URL to a resource that will be used to notify the service back after the payment is complete. This resource must respond with HTTP 2XX status for payment to be marked as complete.
+- `<callback address>` is a full URL to a resource that will be used to notify the service back after the payment is complete. See below for more information
 
 Each service registered as a client must keep track of who bought what. After the payment is complete and the callback resource responded with HTTP 2XX status, the job of the paywall system is done.
 
 Note that payments for each client will still end up in the same Bitcoin HD wallet. This means that all clients should still be the same person or organization, but can be a different service.
+
+### Callback address
+The callback resource should accept both POST and GET requests:
+
+- for POST, it must validate the request and respond with HTTP 2XX status for payment to be marked as complete. See "Server authentication" below for more details on how to validate.
+- for GET, it must redirect the user to a page associated with the purchase on the client's site. It will contain one GET parameter: `id`, which will be the identifier of the request in the payment system.
+
+The POST callback will be used to notify your system that the payment is now complete, while GET callback will be your end users being redirected back from the payment system.
 
 ### Payment requests
 The payment server accepts payment requests through an API call. For a request to be validated, it much identify itself as one of the clients present in the server's database.
