@@ -2130,6 +2130,15 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.58
       Math::Complex 1.36
       perl 5.006001
+  Math-BigInt-GMP-1.6008
+    pathname: P/PJ/PJACKLAM/Math-BigInt-GMP-1.6008.tar.gz
+    provides:
+      Math::BigInt::GMP 1.6008
+    requirements:
+      ExtUtils::MakeMaker 6.58
+      Math::BigInt 1.999819
+      XSLoader 0.02
+      perl 5.006001
   Math-GMPz-0.51
     pathname: S/SI/SISYPHUS/Math-GMPz-0.51.tar.gz
     provides:
