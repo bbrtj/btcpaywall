@@ -135,21 +135,21 @@ This project requires Perl 5.32, PostgreSQL and bitcoind to run properly.
 3. Go into the repository and download the dependencies: `carton install`
 4. Copy `.env.example` to `.env`. Edit database and bitcoin RPC credentials in this file.
 5. Run configuration tasks:
-- `carton exec script/btcpaywall migrate up` - will create required database structure.
+- `carton exec script/btcpaywall migrate --up` - will create required database structure.
 - `carton exec script/btcpaywall generate-master-key` - will generate a new bitcoin key, which will be used to store bitcoins. Make sure to back it up and keep secure!
 - `carton exec script/btcpaywall configure-node` - will generate a new bitcoind wallet and tell the node to load it on startup. This wallet does not need to be backed up, it is only necessary to watch addresses.
-- `carton exec script/btcpaywall add-client <name> <callback address>` - will create a new client in the database. Clients are able to request payments, and each time a payment is complete, the callback address (URL) will be queried.
+- `carton exec script/btcpaywall add-client <name> <callback address>` - will create a new client in the database. Clients are able to request payments, and each time a payment is complete, the callback address (URL) will be queried. The callback address should be a full url, that is containing the schema (usually `https://`)
 6. For production environments, make sure to set the `APP_MODE` in `.env` to `deployment`, as well as generating new `APP_SECRETS` (just google _"random sha256"_)
 
 ## Running the production application
 
 ### Perl web server
 
-`carton exec hypnotoad script/btcpaywall` runs a standalone production web server for the application. By default, the server will listen on port 8080.
+`carton exec script/btcpaywall prefork -p` runs a standalone production web server for the application, ready to be put behind proxy. By default, the server will listen on port 3000.
 
 Additionally, it needs to be set behind a supervisor that will make sure it runs persistently. Use any supervisor of your choice.
 
-See https://docs.mojolicious.org/Mojolicious/Guides/Cookbook#Hypnotoad for more info.
+You can also use Hypnotoad. See https://docs.mojolicious.org/Mojolicious/Guides/Cookbook#Hypnotoad for more info.
 
 ### Regular web server (Apache / Nginx)
 
@@ -164,6 +164,6 @@ Set up a firewall of your choice to hide the Perl web server port (default 8080)
 Cron needs to be set up to run the request handling action in the background:
 
 ```
-* * * * * carton exec /path/to/script/btcpaywall autoresolve
+* * * * * bash -c 'cd /path/to/project && carton exec script/btcpaywall autoresolve' >>/path/to/project/logs/cron.log
 ```
 
