@@ -42,6 +42,20 @@ DatabaseTest->test(
 		is $request->ts, Types::DateTime->coerce($ts), 'timestamp ok';
 
 		is_deeply $items, $raw_items, 'items ok';
+
+		$ts = time - 50;
+		$raw_items = ['yet another item'];
+		%data = (
+			account_id => $acc->id,
+			amount => 9998,
+			items => $raw_items,
+			ts => $ts,
+		);
+		$data{hash} = HashTest->create_hash(HashTest->serialize(\%data, $acc->secret));
+
+		$t->post_ok('/request/new' => json => \%data)
+			->status_is(200)
+			->json_is('/status' => 1);
 	}
 );
 
