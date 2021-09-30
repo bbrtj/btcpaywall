@@ -17,9 +17,9 @@ has '_master_key' => (
 		croak 'invalid MASTER_KEY path setting'
 			unless -f $key;
 
-		btc_extprv
-			->from_mnemonic($key->slurp)
-			->set_network($self->env->getenv('CRYPTO_NETWORK'));
+		my $ext_private = btc_extprv->from_mnemonic($key->slurp);
+		$ext_private->set_network($self->env->getenv('CRYPTO_NETWORK'));
+		return $ext_private;
 	},
 	init_arg => undef,
 );
