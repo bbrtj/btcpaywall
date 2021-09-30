@@ -16,10 +16,11 @@ has '_master_key' => (
 		my $key = path($self->env->getenv('MASTER_KEY'));
 		croak 'invalid MASTER_KEY path setting'
 			unless -f $key;
-
-		btc_extprv
-			->from_mnemonic($key->slurp)
-			->set_network($self->env->getenv('CRYPTO_NETWORK'));
+			
+              my $prv = btc_extprv
+                      ->from_mnemonic($key->slurp);
+              $prv->set_network($self->env->getenv('CRYPTO_NETWORK'));
+              return $prv;
 	},
 	init_arg => undef,
 );
