@@ -122,46 +122,47 @@ DISTRIBUTIONS
       perl 5.010001
       strict 0
       warnings 0
-  Bitcoin-Crypto-0.997
-    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-0.997.tar.gz
+  Bitcoin-Crypto-1.002
+    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-1.002.tar.gz
     provides:
-      Bitcoin::Crypto 0.997
-      Bitcoin::Crypto::BIP44 0.997
-      Bitcoin::Crypto::Base58 0.997
-      Bitcoin::Crypto::Bech32 0.997
-      Bitcoin::Crypto::Config 0.997
-      Bitcoin::Crypto::Exception 0.997
-      Bitcoin::Crypto::Exception::Base58InputChecksum 0.997
-      Bitcoin::Crypto::Exception::Base58InputFormat 0.997
-      Bitcoin::Crypto::Exception::Bech32InputChecksum 0.997
-      Bitcoin::Crypto::Exception::Bech32InputData 0.997
-      Bitcoin::Crypto::Exception::Bech32InputFormat 0.997
-      Bitcoin::Crypto::Exception::KeyCreate 0.997
-      Bitcoin::Crypto::Exception::KeyDerive 0.997
-      Bitcoin::Crypto::Exception::MnemonicCheck 0.997
-      Bitcoin::Crypto::Exception::MnemonicGenerate 0.997
-      Bitcoin::Crypto::Exception::NetworkConfig 0.997
-      Bitcoin::Crypto::Exception::ScriptOpcode 0.997
-      Bitcoin::Crypto::Exception::ScriptPush 0.997
-      Bitcoin::Crypto::Exception::SegwitProgram 0.997
-      Bitcoin::Crypto::Exception::Sign 0.997
-      Bitcoin::Crypto::Exception::ValidationTest 0.997
-      Bitcoin::Crypto::Exception::Verify 0.997
-      Bitcoin::Crypto::Helpers 0.997
-      Bitcoin::Crypto::Key::ExtPrivate 0.997
-      Bitcoin::Crypto::Key::ExtPublic 0.997
-      Bitcoin::Crypto::Key::Private 0.997
-      Bitcoin::Crypto::Key::Public 0.997
-      Bitcoin::Crypto::Network 0.997
-      Bitcoin::Crypto::Role::BasicKey 0.997
-      Bitcoin::Crypto::Role::Compressed 0.997
-      Bitcoin::Crypto::Role::ExtendedKey 0.997
-      Bitcoin::Crypto::Role::Key 0.997
-      Bitcoin::Crypto::Role::Network 0.997
-      Bitcoin::Crypto::Script 0.997
-      Bitcoin::Crypto::Segwit 0.997
-      Bitcoin::Crypto::Types 0.997
-      Bitcoin::Crypto::Util 0.997
+      Bitcoin::Crypto 1.002
+      Bitcoin::Crypto::BIP44 1.002
+      Bitcoin::Crypto::Base58 1.002
+      Bitcoin::Crypto::Bech32 1.002
+      Bitcoin::Crypto::Config 1.002
+      Bitcoin::Crypto::Exception 1.002
+      Bitcoin::Crypto::Exception::Base58InputChecksum 1.002
+      Bitcoin::Crypto::Exception::Base58InputFormat 1.002
+      Bitcoin::Crypto::Exception::Bech32InputChecksum 1.002
+      Bitcoin::Crypto::Exception::Bech32InputData 1.002
+      Bitcoin::Crypto::Exception::Bech32InputFormat 1.002
+      Bitcoin::Crypto::Exception::Bech32Type 1.002
+      Bitcoin::Crypto::Exception::KeyCreate 1.002
+      Bitcoin::Crypto::Exception::KeyDerive 1.002
+      Bitcoin::Crypto::Exception::MnemonicCheck 1.002
+      Bitcoin::Crypto::Exception::MnemonicGenerate 1.002
+      Bitcoin::Crypto::Exception::NetworkConfig 1.002
+      Bitcoin::Crypto::Exception::ScriptOpcode 1.002
+      Bitcoin::Crypto::Exception::ScriptPush 1.002
+      Bitcoin::Crypto::Exception::SegwitProgram 1.002
+      Bitcoin::Crypto::Exception::Sign 1.002
+      Bitcoin::Crypto::Exception::ValidationTest 1.002
+      Bitcoin::Crypto::Exception::Verify 1.002
+      Bitcoin::Crypto::Helpers 1.002
+      Bitcoin::Crypto::Key::ExtPrivate 1.002
+      Bitcoin::Crypto::Key::ExtPublic 1.002
+      Bitcoin::Crypto::Key::Private 1.002
+      Bitcoin::Crypto::Key::Public 1.002
+      Bitcoin::Crypto::Network 1.002
+      Bitcoin::Crypto::Role::BasicKey 1.002
+      Bitcoin::Crypto::Role::Compressed 1.002
+      Bitcoin::Crypto::Role::ExtendedKey 1.002
+      Bitcoin::Crypto::Role::Key 1.002
+      Bitcoin::Crypto::Role::Network 1.002
+      Bitcoin::Crypto::Script 1.002
+      Bitcoin::Crypto::Segwit 1.002
+      Bitcoin::Crypto::Types 1.002
+      Bitcoin::Crypto::Util 1.002
     requirements:
       Bitcoin::BIP39 0.002
       CryptX 0.062
@@ -1789,28 +1790,28 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008001
-  Form-Tiny-2.01
-    pathname: B/BR/BRTASTIC/Form-Tiny-2.01.tar.gz
+  Form-Tiny-2.02
+    pathname: B/BR/BRTASTIC/Form-Tiny-2.02.tar.gz
     provides:
-      Form::Tiny 2.01
-      Form::Tiny::Error 2.01
-      Form::Tiny::Error::DoesNotExist 2.01
-      Form::Tiny::Error::DoesNotValidate 2.01
-      Form::Tiny::Error::InvalidFormat 2.01
-      Form::Tiny::Error::IsntStrict 2.01
-      Form::Tiny::FieldDefinition 2.01
-      Form::Tiny::FieldDefinitionBuilder 2.01
-      Form::Tiny::Filter 2.01
-      Form::Tiny::Form 2.01
-      Form::Tiny::Hook 2.01
-      Form::Tiny::Inline 2.01
-      Form::Tiny::Inline::Builder 2.01
-      Form::Tiny::Meta 2.01
-      Form::Tiny::Meta::Filtered 2.01
-      Form::Tiny::Meta::Strict 2.01
-      Form::Tiny::Path 2.01
-      Form::Tiny::PathValue 2.01
-      Form::Tiny::Utils 2.01
+      Form::Tiny 2.02
+      Form::Tiny::Error 2.02
+      Form::Tiny::Error::DoesNotExist 2.02
+      Form::Tiny::Error::DoesNotValidate 2.02
+      Form::Tiny::Error::InvalidFormat 2.02
+      Form::Tiny::Error::IsntStrict 2.02
+      Form::Tiny::FieldDefinition 2.02
+      Form::Tiny::FieldDefinitionBuilder 2.02
+      Form::Tiny::Filter 2.02
+      Form::Tiny::Form 2.02
+      Form::Tiny::Hook 2.02
+      Form::Tiny::Inline 2.02
+      Form::Tiny::Inline::Builder 2.02
+      Form::Tiny::Meta 2.02
+      Form::Tiny::Meta::Filtered 2.02
+      Form::Tiny::Meta::Strict 2.02
+      Form::Tiny::Path 2.02
+      Form::Tiny::PathValue 2.02
+      Form::Tiny::Utils 2.02
     requirements:
       ExtUtils::MakeMaker 0
       Import::Into 0
@@ -2118,27 +2119,28 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006
-  Math-BigInt-1.999823
-    pathname: P/PJ/PJACKLAM/Math-BigInt-1.999823.tar.gz
+  Math-BigInt-1.999827
+    pathname: P/PJ/PJACKLAM/Math-BigInt-1.999827.tar.gz
     provides:
-      Math::BigFloat 1.999823
-      Math::BigInt 1.999823
-      Math::BigInt::Calc 1.999823
-      Math::BigInt::Lib 1.999823
+      Math::BigFloat 1.999827
+      Math::BigInt 1.999827
+      Math::BigInt::Calc 1.999827
+      Math::BigInt::Lib 1.999827
     requirements:
       Carp 1.22
       ExtUtils::MakeMaker 6.58
       Math::Complex 1.36
+      Scalar::Util 0
       perl 5.006001
-  Math-BigInt-GMP-1.6008
-    pathname: P/PJ/PJACKLAM/Math-BigInt-GMP-1.6008.tar.gz
+  Math-BigInt-GMP-1.6009
+    pathname: P/PJ/PJACKLAM/Math-BigInt-GMP-1.6009.tar.gz
     provides:
-      Math::BigInt::GMP 1.6008
+      Math::BigInt::GMP 1.6009
     requirements:
       ExtUtils::MakeMaker 6.58
       Math::BigInt 1.999819
       XSLoader 0.02
-      perl 5.006001
+      perl 5.008
   Math-GMPz-0.51
     pathname: S/SI/SISYPHUS/Math-GMPz-0.51.tar.gz
     provides:
@@ -2306,10 +2308,10 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojo-Pg-4.25
-    pathname: S/SR/SRI/Mojo-Pg-4.25.tar.gz
+  Mojo-Pg-4.26
+    pathname: S/SR/SRI/Mojo-Pg-4.26.tar.gz
     provides:
-      Mojo::Pg 4.25
+      Mojo::Pg 4.26
       Mojo::Pg::Database undef
       Mojo::Pg::Migrations undef
       Mojo::Pg::PubSub undef
@@ -3467,10 +3469,10 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 6.30
       IO::File 1.14
-  String-Random-0.31
-    pathname: S/SH/SHLOMIF/String-Random-0.31.tar.gz
+  String-Random-0.32
+    pathname: S/SH/SHLOMIF/String-Random-0.32.tar.gz
     provides:
-      String::Random 0.31
+      String::Random 0.32
     requirements:
       Carp 0
       Exporter 0
