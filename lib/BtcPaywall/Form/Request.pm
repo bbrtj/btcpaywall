@@ -9,7 +9,8 @@ use Model::Request;
 use header;
 
 use constant _ts_treshold => 300;    # 5 minutes
-use constant MINIMUM_AMOUNT => 5460;
+
+my $env = DI->get('env');
 
 has 'repository' => (
 	is => 'ro',
@@ -27,7 +28,7 @@ form_field 'account_id' => (
 );
 
 form_field 'amount' => (
-	type => Types::PositiveInt->where(q{ $_ >= } . MINIMUM_AMOUNT),
+	type => Types::PositiveInt->where(q{ $_ >= } . $env->getenv('MINIMUM_PAYMENT_AMOUNT')),
 	required => 1,
 );
 

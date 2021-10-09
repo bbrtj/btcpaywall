@@ -4,9 +4,11 @@ use Object::Sub;
 use Model::Account;
 use BtcPaywall::Form::Request;
 use Data::Dumper;
+use DI;
 use lib 't/lib';
 use HashTest;
 
+my $env = DI->get('env');
 my $test_client = '01FCK7X2BGS50Q86SR2ZQEDAM9';
 my $test_secret = 'Uqn3USEcpttjin9Deqb4B8dFl291PUYi';
 my $test_time = time;
@@ -92,7 +94,7 @@ my @data = (
 		0,
 		{
 			account_id => $test_client,
-			amount => 3000,
+			amount => $env->getenv('MINIMUM_PAYMENT_AMOUNT') - 1,
 			items => ['some item'],
 			ts => $test_time - 30,
 			hash => HashTest->create_hash($test_client, 3000, 'some item', $test_time - 30, $test_secret)
