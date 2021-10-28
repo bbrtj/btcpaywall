@@ -167,3 +167,9 @@ Cron needs to be set up to run the request handling action in the background:
 * * * * * bash -c 'cd /path/to/project && carton exec script/btcpaywall autoresolve' >>/path/to/project/logs/cron.log
 ```
 
+### FAQ
+
+#### Can't redeem my coins!
+
+If you can't see your coins in a HD wallet after entering your passphrase, see [This issue](https://github.com/brtastic/btcpaywall/issues/4)
+
