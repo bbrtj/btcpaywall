@@ -12,17 +12,6 @@ use constant {
 	_class => Model::Request->get_result_class,
 };
 
-sub get_awaiting ($self)
-{
-	return [
-		$self->db->dbc->resultset($self->_class)->search(
-			{
-				status => Model::Request->STATUS_AWAITING,
-			}
-		)
-	];
-}
-
 sub get_with_items ($self, $id)
 {
 	my $result = $self->get_by_id($id, 1, prefetch => 'items');
