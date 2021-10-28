@@ -23,6 +23,14 @@ has '_master_key' => (
 	init_arg => undef,
 );
 
+sub reveal_key ($self, $account, $request)
+{
+	return $self->_master_key->derive_key_bip44(
+		account => $account->account_index,
+		index => $request->derivation_index,
+	)->get_basic_key->to_wif;
+}
+
 sub get_payment_address ($self, $account, $request, $compat = 0)
 {
 	my $extprv = $self->_master_key->derive_key_bip44(
