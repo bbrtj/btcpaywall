@@ -28,12 +28,25 @@ has '_master_key' => (
 	init_arg => undef,
 );
 
-sub get_payment_address ($self, $account, $request, $compat = 0)
+sub _derive_key ($self, $account, $request, $compat = 0)
 {
-	my $extprv = $self->_master_key->derive_key_bip44(
+	return $self->_master_key->derive_key_bip44(
+		purpose => $compat ? 49 : 84,
 		account => $account->account_index,
 		index => $request->derivation_index,
 	);
+}
+
+sub reveal_key ($self, $account, $request, $compat = 0)
+{
+	my $extprv = $self->_derive_key($account, $request, $compat);
+
+	return $extprv->get_basic_key->to_wif;
+}
+
+sub get_payment_address ($self, $account, $request, $compat = 0)
+{
+	my $extprv = $self->_derive_key($account, $request, $compat);
 
 	my $public = $extprv->get_basic_key->get_public_key;
 	return $compat
