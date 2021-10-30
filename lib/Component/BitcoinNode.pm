@@ -49,6 +49,21 @@ sub watch_address ($self, $address)
 	return;
 }
 
+sub import_private_key ($self, $priv)
+{
+	$self->rpc->importprivkey($priv, '', false);
+	return;
+}
+
+sub withdraw ($self, $address, $blocks = $self->env->getenv('TRANSACTION_REQUIRED_CONFIRMATIONS'))
+{
+	my $txs = $self->rpc->listunspent(0+ $blocks, BLOCKS_NOLIMIT);
+	my $total = sum0 map { $_->{amount} } $txs->@*;
+
+	$self->rpc->sendtoaddress($address, $total, 'withdrawal', 'my address', true, undef, undef, 'economical');
+	return;
+}
+
 sub check_unconfirmed_payment ($self, $address, $amount)
 {
 	return $self->check_payment($address, $amount, 0);
