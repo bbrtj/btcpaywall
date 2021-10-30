@@ -122,50 +122,50 @@ DISTRIBUTIONS
       perl 5.010001
       strict 0
       warnings 0
-  Bitcoin-Crypto-1.002
-    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-1.002.tar.gz
+  Bitcoin-Crypto-1.004
+    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-1.004.tar.gz
     provides:
-      Bitcoin::Crypto 1.002
-      Bitcoin::Crypto::BIP44 1.002
-      Bitcoin::Crypto::Base58 1.002
-      Bitcoin::Crypto::Bech32 1.002
-      Bitcoin::Crypto::Config 1.002
-      Bitcoin::Crypto::Exception 1.002
-      Bitcoin::Crypto::Exception::Base58InputChecksum 1.002
-      Bitcoin::Crypto::Exception::Base58InputFormat 1.002
-      Bitcoin::Crypto::Exception::Bech32InputChecksum 1.002
-      Bitcoin::Crypto::Exception::Bech32InputData 1.002
-      Bitcoin::Crypto::Exception::Bech32InputFormat 1.002
-      Bitcoin::Crypto::Exception::Bech32Type 1.002
-      Bitcoin::Crypto::Exception::KeyCreate 1.002
-      Bitcoin::Crypto::Exception::KeyDerive 1.002
-      Bitcoin::Crypto::Exception::MnemonicCheck 1.002
-      Bitcoin::Crypto::Exception::MnemonicGenerate 1.002
-      Bitcoin::Crypto::Exception::NetworkConfig 1.002
-      Bitcoin::Crypto::Exception::ScriptOpcode 1.002
-      Bitcoin::Crypto::Exception::ScriptPush 1.002
-      Bitcoin::Crypto::Exception::SegwitProgram 1.002
-      Bitcoin::Crypto::Exception::Sign 1.002
-      Bitcoin::Crypto::Exception::ValidationTest 1.002
-      Bitcoin::Crypto::Exception::Verify 1.002
-      Bitcoin::Crypto::Helpers 1.002
-      Bitcoin::Crypto::Key::ExtPrivate 1.002
-      Bitcoin::Crypto::Key::ExtPublic 1.002
-      Bitcoin::Crypto::Key::Private 1.002
-      Bitcoin::Crypto::Key::Public 1.002
-      Bitcoin::Crypto::Network 1.002
-      Bitcoin::Crypto::Role::BasicKey 1.002
-      Bitcoin::Crypto::Role::Compressed 1.002
-      Bitcoin::Crypto::Role::ExtendedKey 1.002
-      Bitcoin::Crypto::Role::Key 1.002
-      Bitcoin::Crypto::Role::Network 1.002
-      Bitcoin::Crypto::Script 1.002
-      Bitcoin::Crypto::Segwit 1.002
-      Bitcoin::Crypto::Types 1.002
-      Bitcoin::Crypto::Util 1.002
+      Bitcoin::Crypto 1.004
+      Bitcoin::Crypto::BIP44 1.004
+      Bitcoin::Crypto::Base58 1.004
+      Bitcoin::Crypto::Bech32 1.004
+      Bitcoin::Crypto::Config 1.004
+      Bitcoin::Crypto::Exception 1.004
+      Bitcoin::Crypto::Exception::Base58InputChecksum 1.004
+      Bitcoin::Crypto::Exception::Base58InputFormat 1.004
+      Bitcoin::Crypto::Exception::Bech32InputChecksum 1.004
+      Bitcoin::Crypto::Exception::Bech32InputData 1.004
+      Bitcoin::Crypto::Exception::Bech32InputFormat 1.004
+      Bitcoin::Crypto::Exception::Bech32Type 1.004
+      Bitcoin::Crypto::Exception::KeyCreate 1.004
+      Bitcoin::Crypto::Exception::KeyDerive 1.004
+      Bitcoin::Crypto::Exception::MnemonicCheck 1.004
+      Bitcoin::Crypto::Exception::MnemonicGenerate 1.004
+      Bitcoin::Crypto::Exception::NetworkConfig 1.004
+      Bitcoin::Crypto::Exception::ScriptOpcode 1.004
+      Bitcoin::Crypto::Exception::ScriptPush 1.004
+      Bitcoin::Crypto::Exception::SegwitProgram 1.004
+      Bitcoin::Crypto::Exception::Sign 1.004
+      Bitcoin::Crypto::Exception::ValidationTest 1.004
+      Bitcoin::Crypto::Exception::Verify 1.004
+      Bitcoin::Crypto::Helpers 1.004
+      Bitcoin::Crypto::Key::ExtPrivate 1.004
+      Bitcoin::Crypto::Key::ExtPublic 1.004
+      Bitcoin::Crypto::Key::Private 1.004
+      Bitcoin::Crypto::Key::Public 1.004
+      Bitcoin::Crypto::Network 1.004
+      Bitcoin::Crypto::Role::BasicKey 1.004
+      Bitcoin::Crypto::Role::Compressed 1.004
+      Bitcoin::Crypto::Role::ExtendedKey 1.004
+      Bitcoin::Crypto::Role::Key 1.004
+      Bitcoin::Crypto::Role::Network 1.004
+      Bitcoin::Crypto::Script 1.004
+      Bitcoin::Crypto::Segwit 1.004
+      Bitcoin::Crypto::Types 1.004
+      Bitcoin::Crypto::Util 1.004
     requirements:
       Bitcoin::BIP39 0.002
-      CryptX 0.062
+      CryptX 0.073
       ExtUtils::MakeMaker 0
       Math::BigInt 1.999808
       Moo 2.003004
@@ -2119,18 +2119,17 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006
-  Math-BigInt-1.999827
-    pathname: P/PJ/PJACKLAM/Math-BigInt-1.999827.tar.gz
+  Math-BigInt-1.999823
+    pathname: P/PJ/PJACKLAM/Math-BigInt-1.999823.tar.gz
     provides:
-      Math::BigFloat 1.999827
-      Math::BigInt 1.999827
-      Math::BigInt::Calc 1.999827
-      Math::BigInt::Lib 1.999827
+      Math::BigFloat 1.999823
+      Math::BigInt 1.999823
+      Math::BigInt::Calc 1.999823
+      Math::BigInt::Lib 1.999823
     requirements:
       Carp 1.22
       ExtUtils::MakeMaker 6.58
       Math::Complex 1.36
-      Scalar::Util 0
       perl 5.006001
   Math-BigInt-GMP-1.6009
     pathname: P/PJ/PJACKLAM/Math-BigInt-GMP-1.6009.tar.gz

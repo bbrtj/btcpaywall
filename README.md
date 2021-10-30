@@ -132,7 +132,7 @@ This project requires Perl 5.32, PostgreSQL and bitcoind to run properly.
 ### Code setup
 1. Clone the repository
 2. Add Carton to Perl: `cpan Carton`
-3. Go into the repository and download the dependencies: `carton install`
+3. Go into the repository and download the dependencies: `carton install --deployment`
 4. Copy `.env.example` to `.env`. Edit database and bitcoin RPC credentials in this file.
 5. Run configuration tasks:
 - `carton exec script/btcpaywall migrate --up` - will create required database structure.
