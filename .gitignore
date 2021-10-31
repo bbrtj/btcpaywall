@@ -5,3 +5,11 @@
 /master.key
 /logs/*
 !/logs/.keep
+
+Makefile*
+!Makefile.PL
+MYMETA*
+blib/*
+MANIFEST*
+pm_to_blib
+*.tar.gz
