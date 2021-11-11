@@ -20,11 +20,20 @@ sub run ($self)
 		]
 	);
 
-	my $mkey = DI->get('master_key');
-	for my $unit ($requests->@*) {
-		say $mkey->reveal_key($unit->account, $unit->request);
+	say 'Note: not all of following addresses contain funds.';
+
+	for my $mkey (DI->get('master_key'), DI->get('master_key_fixed')) {
+		for my $unit ($requests->@*) {
+			say $mkey->reveal_key($unit->account, $unit->request);
+		}
 	}
 
+	for my $mkey (DI->get('master_key_hd')) {
+		for my $unit ($requests->@*) {
+			say $mkey->reveal_key($unit->account, $unit->request, 0);
+			say $mkey->reveal_key($unit->account, $unit->request, 1);
+		}
+	}
 }
 
 __END__

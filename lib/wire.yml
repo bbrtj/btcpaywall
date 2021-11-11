@@ -19,6 +19,18 @@ master_key:
         env:
             $ref: env
 
+master_key_fixed:
+    class: Component::MasterKeyFixed
+    args:
+        env:
+            $ref: env
+
+master_key_hd:
+    class: Component::MasterKeyHD
+    args:
+        env:
+            $ref: env
+
 requests_repository:
     class: Repository::Request
     args:

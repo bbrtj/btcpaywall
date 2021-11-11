@@ -20,9 +20,17 @@ sub run ($self, $address)
 	);
 
 	my $node = DI->get('node');
-	my $mkey = DI->get('master_key');
-	for my $unit ($requests->@*) {
-		$node->import_private_key($mkey->reveal_key($unit->account, $unit->request));
+	for my $mkey (DI->get('master_key'), DI->get('master_key_fixed')) {
+		for my $unit ($requests->@*) {
+			$node->import_private_key($mkey->reveal_key($unit->account, $unit->request));
+		}
+	}
+
+	for my $mkey (DI->get('master_key_hd')) {
+		for my $unit ($requests->@*) {
+			$node->import_private_key($mkey->reveal_key($unit->account, $unit->request, 0));
+			$node->import_private_key($mkey->reveal_key($unit->account, $unit->request, 1));
+		}
 	}
 
 	$node->withdraw($address);
