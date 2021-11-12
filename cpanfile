@@ -1,8 +1,8 @@
 requires 'Mojolicious', '8.60';
 requires 'Moose', 0;
 requires 'Mojo::Pg', 0;
-requires 'Bitcoin::Crypto', 1.004;
-requires 'Form::Tiny', '2.00';
+requires 'Bitcoin::Crypto', 1.005;
+requires 'Form::Tiny', '==2.02';
 requires 'DBIx::Class', 0;
 requires 'Import::Into', 0;
 requires 'true', 0;
@@ -22,6 +22,6 @@ requires 'Ref::Util', 0;
 requires 'Mock::Sub', 0;
 requires 'Test::TCP', 0;
 requires 'Data::ULID', 0;
-requires 'Math::BigInt', '==1.999823';
+requires 'Math::BigInt', '1.999823';
 requires 'Math::BigInt::GMP', 0;
 
