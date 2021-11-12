@@ -54,7 +54,7 @@
 			Transfer <%= Helpers::satoshi_to_bitcoin($unit->request->amount) %> Ƀ to:
 		</h3>
 
-		<p>
+		<p id="address-field" data-address="<%= $address %>">
 			<b>
 			%= Helpers::format_address($address)
 			</b>
