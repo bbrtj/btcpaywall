@@ -7,7 +7,7 @@ It is a standalone payment server that uses a local Bitcoin node to check the ba
 - Uses no third party services
 - Can work on a pruned node, which only takes a couple gigabytes of space
 - Uses Segregated Witness addresses `P2WPKH` natively, but can also accept compatibility SegWit addresses `P2SH(P2WPKH)`
-- BIP44 compilant, any BIP44 wallet can be used to withdraw payments
+- partial HD wallet compatibility
 
 ## How it works?
 
@@ -121,6 +121,24 @@ Where the `~` infix operator joins the strings with two characters `//` in betwe
 
 After checking that all the data is valid, and that the hash created using client's secret matches, the given `request_id` should be marked as paid for, and proper resources should be granted to the user who is associated with that request. HTTP 2XX status should be returned from the action, to prevent the payment server from querying the callback URL. Returning anything else than HTTP 2XX will cause the payment server to retry the request every minute.
 
+### Coins withdrawal
+
+This system is partly compilant with BIP44 / BIP49 / BIP84 standards, which makes the funds visible in HD wallets like Coinomi. However, due to the way HD wallets search for funds (defined in BIP44) coins may not be visible in the wallet in some cases.
+
+Instead, it is recommended to use the `withdraw` command to move coins to more secure storage. This command imports all the private keys into the Bitcoin node and sends a transaction with all the funds to a given address. The usage is:
+
+```
+carton exec script/btcpaywall withdraw <address>
+```
+
+Where `<address>` is a proper Bitcoin address that you own. Note: there is no confirmation prompt, so make sure to use a valid address.
+
+This command can also be automated to move coins regularly to a cold storage address, for example once a day:
+
+```
+0 0 * * * bash -c 'cd /path/to/project && carton exec script/btcpaywall withdraw <address>' >>/path/to/project/logs/cron.log
+```
+
 ## Installation
 This project requires Perl 5.32, PostgreSQL and bitcoind to run properly.
 
@@ -171,5 +189,5 @@ Cron needs to be set up to run the request handling action in the background:
 
 #### Can't redeem my coins!
 
-If you can't see your coins in a HD wallet after entering your passphrase, see [This issue](https://github.com/brtastic/btcpaywall/issues/4)
+If you can't see your coins in a HD wallet after entering your passphrase, use the `withdraw` command described above. In case of problems, see the discussion in [This issue](https://github.com/brtastic/btcpaywall/issues/4)
 
