@@ -1717,32 +1717,34 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008001
-  Form-Tiny-2.02
-    pathname: B/BR/BRTASTIC/Form-Tiny-2.02.tar.gz
+  Form-Tiny-2.12
+    pathname: B/BR/BRTASTIC/Form-Tiny-2.12.tar.gz
     provides:
-      Form::Tiny 2.02
-      Form::Tiny::Error 2.02
-      Form::Tiny::Error::DoesNotExist 2.02
-      Form::Tiny::Error::DoesNotValidate 2.02
-      Form::Tiny::Error::InvalidFormat 2.02
-      Form::Tiny::Error::IsntStrict 2.02
-      Form::Tiny::FieldDefinition 2.02
-      Form::Tiny::FieldDefinitionBuilder 2.02
-      Form::Tiny::Filter 2.02
-      Form::Tiny::Form 2.02
-      Form::Tiny::Hook 2.02
-      Form::Tiny::Inline 2.02
-      Form::Tiny::Inline::Builder 2.02
-      Form::Tiny::Meta 2.02
-      Form::Tiny::Meta::Filtered 2.02
-      Form::Tiny::Meta::Strict 2.02
-      Form::Tiny::Path 2.02
-      Form::Tiny::PathValue 2.02
-      Form::Tiny::Utils 2.02
+      Form::Tiny 2.12
+      Form::Tiny::Error 2.12
+      Form::Tiny::Error::DoesNotValidate 2.12
+      Form::Tiny::Error::InvalidFormat 2.12
+      Form::Tiny::Error::IsntStrict 2.12
+      Form::Tiny::Error::NestedFormError 2.12
+      Form::Tiny::Error::Required 2.12
+      Form::Tiny::FieldDefinition 2.12
+      Form::Tiny::FieldDefinitionBuilder 2.12
+      Form::Tiny::Filter 2.12
+      Form::Tiny::Form 2.12
+      Form::Tiny::Hook 2.12
+      Form::Tiny::Inline 2.12
+      Form::Tiny::Inline::Builder 2.12
+      Form::Tiny::Meta 2.12
+      Form::Tiny::Meta::Filtered 2.12
+      Form::Tiny::Meta::Strict 2.12
+      Form::Tiny::Path 2.12
+      Form::Tiny::Plugin 2.12
+      Form::Tiny::Utils 2.12
     requirements:
       ExtUtils::MakeMaker 0
       Import::Into 0
       Moo 2.000000
+      Sub::Util 0
       Type::Tiny 1.004000
       namespace::clean 0
       perl 5.010001

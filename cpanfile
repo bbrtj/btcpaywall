@@ -2,7 +2,7 @@ requires 'Mojolicious', '8.60';
 requires 'Moose', 0;
 requires 'Mojo::Pg', 0;
 requires 'Bitcoin::Crypto', 1.005;
-requires 'Form::Tiny', '==2.02';
+requires 'Form::Tiny', '2.04';
 requires 'DBIx::Class', 0;
 requires 'Import::Into', 0;
 requires 'true', 0;
