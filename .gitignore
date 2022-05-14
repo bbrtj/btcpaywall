@@ -1,5 +1,6 @@
 /.tidyall.d
 /local
+/.carmel
 /node_modules
 /.env
 /master.key
@@ -13,3 +14,4 @@ blib/*
 MANIFEST*
 pm_to_blib
 *.tar.gz
+

@@ -14,7 +14,7 @@ It is a standalone payment server that uses a local Bitcoin node to check the ba
 ### Client accounts
 Each service that is going to be allowed to request a payment through the server must first be added to the database with a command:
 ```
-carton exec script/btcpaywall add-client <name> <callback address>
+script/btcpaywall add-client <name> <callback address>
 ```
 
 Where:
@@ -128,7 +128,7 @@ This system is partly compilant with BIP44 / BIP49 / BIP84 standards, which make
 Instead, it is recommended to use the `withdraw` command to move coins to more secure storage. This command imports all the private keys into the Bitcoin node and sends a transaction with all the funds to a given address. The usage is:
 
 ```
-carton exec script/btcpaywall withdraw <address>
+script/btcpaywall withdraw <address>
 ```
 
 Where `<address>` is a proper Bitcoin address that you own. Note: there is no confirmation prompt, so make sure to use a valid address.
@@ -136,7 +136,7 @@ Where `<address>` is a proper Bitcoin address that you own. Note: there is no co
 This command can also be automated to move coins regularly to a cold storage address, for example once a day:
 
 ```
-0 0 * * * bash -c 'cd /path/to/project && carton exec script/btcpaywall withdraw <address>' >>/path/to/project/logs/cron.log
+0 0 * * * bash -c 'cd /path/to/project && script/btcpaywall withdraw <address>' >>/path/to/project/logs/cron.log
 ```
 
 ## Installation
@@ -149,21 +149,21 @@ This project requires Perl 5.32, PostgreSQL and bitcoind to run properly.
 
 ### Code setup
 1. Clone the repository
-2. Add Carton to Perl: `cpan Carton`
-3. Go into the repository and download the dependencies: `carton install --deployment`
+2. Add Carmel to Perl: `cpan Carmel`
+3. Go into the repository directory and install the dependencies: `carmel install && carmel rollout`
 4. Copy `.env.example` to `.env`. Edit database and bitcoin RPC credentials in this file.
 5. Run configuration tasks:
-- `carton exec script/btcpaywall migrate --up` - will create required database structure.
-- `carton exec script/btcpaywall generate-master-key` - will generate a new bitcoin key, which will be used to store bitcoins. Make sure to back it up and keep secure!
-- `carton exec script/btcpaywall configure-node` - will generate a new bitcoind wallet and tell the node to load it on startup. This wallet does not need to be backed up, it is only necessary to watch addresses.
-- `carton exec script/btcpaywall add-client <name> <callback address>` - will create a new client in the database. Clients are able to request payments, and each time a payment is complete, the callback address (URL) will be queried. The callback address should be a full url, that is containing the schema (usually `https://`)
+- `script/btcpaywall migrate --up` - will create required database structure.
+- `script/btcpaywall generate-master-key` - will generate a new bitcoin key, which will be used to store bitcoins. Make sure to back it up and keep secure!
+- `script/btcpaywall configure-node` - will generate a new bitcoind wallet and tell the node to load it on startup. This wallet does not need to be backed up, it is only necessary to watch addresses.
+- `script/btcpaywall add-client <name> <callback address>` - will create a new client in the database. Clients are able to request payments, and each time a payment is complete, the callback address (URL) will be queried. The callback address should be a full url, that is containing the schema (usually `https://`)
 6. For production environments, make sure to set the `APP_MODE` in `.env` to `deployment`, as well as generating new `APP_SECRETS` (just google _"random sha256"_)
 
 ## Running the production application
 
 ### Perl web server
 
-`carton exec script/btcpaywall prefork -p` runs a standalone production web server for the application, ready to be put behind proxy. By default, the server will listen on port 3000.
+`script/btcpaywall prefork -p` runs a standalone production web server for the application, ready to be put behind proxy. By default, the server will listen on port 3000.
 
 Additionally, it needs to be set behind a supervisor that will make sure it runs persistently. Use any supervisor of your choice.
 
@@ -182,7 +182,7 @@ Set up a firewall of your choice to hide the Perl web server port (default 8080)
 Cron needs to be set up to run the request handling action in the background:
 
 ```
-* * * * * bash -c 'cd /path/to/project && carton exec script/btcpaywall autoresolve' >>/path/to/project/logs/cron.log
+* * * * * bash -c 'cd /path/to/project && script/btcpaywall autoresolve' >>/path/to/project/logs/cron.log
 ```
 
 ### FAQ

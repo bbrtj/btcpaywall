@@ -1,2 +1,4 @@
 --lib
+-Ilocal/lib/perl5
 --recurse
+

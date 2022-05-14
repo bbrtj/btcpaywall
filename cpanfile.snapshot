@@ -225,21 +225,6 @@ DISTRIBUTIONS
       strict 0
       utf8 0
       warnings 0
-  Capture-Tiny-0.48
-    pathname: D/DA/DAGOLDEN/Capture-Tiny-0.48.tar.gz
-    provides:
-      Capture::Tiny 0.48
-    requirements:
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      File::Spec 0
-      File::Temp 0
-      IO::Handle 0
-      Scalar::Util 0
-      perl 5.006
-      strict 0
-      warnings 0
   Class-Accessor-Grouped-0.10014
     pathname: H/HA/HAARG/Class-Accessor-Grouped-0.10014.tar.gz
     provides:
@@ -429,37 +414,6 @@ DISTRIBUTIONS
       base 0
       constant 0
       perl 5.006002
-  Crypt-Random-Source-0.14
-    pathname: E/ET/ETHER/Crypt-Random-Source-0.14.tar.gz
-    provides:
-      Crypt::Random::Source 0.14
-      Crypt::Random::Source::Base 0.14
-      Crypt::Random::Source::Base::File 0.14
-      Crypt::Random::Source::Base::Handle 0.14
-      Crypt::Random::Source::Base::Proc 0.14
-      Crypt::Random::Source::Base::RandomDevice 0.14
-      Crypt::Random::Source::Factory 0.14
-      Crypt::Random::Source::Strong 0.14
-      Crypt::Random::Source::Strong::devrandom 0.14
-      Crypt::Random::Source::Weak 0.14
-      Crypt::Random::Source::Weak::devurandom 0.14
-    requirements:
-      Capture::Tiny 0.08
-      Carp 0
-      ExtUtils::MakeMaker 0
-      File::Spec 0
-      IO::File 1.14
-      IO::Handle 0
-      Module::Build::Tiny 0.034
-      Module::Find 0
-      Module::Runtime 0
-      Moo 1.002000
-      Sub::Exporter 0
-      Types::Standard 0
-      namespace::clean 0.11
-      perl 5.008
-      strict 0
-      warnings 0
   Crypt-Random-TESHA2-0.01
     pathname: D/DA/DANAJ/Crypt-Random-TESHA2-0.01.tar.gz
     provides:
@@ -1615,20 +1569,6 @@ DISTRIBUTIONS
       perl 5.010
       strict 0
       warnings 0
-  Encode-Base32-GMP-0.02
-    pathname: J/JW/JWANG/Encode-Base32-GMP-0.02.tar.gz
-    provides:
-      Encode::Base32::GMP 0.02
-    requirements:
-      Carp 0
-      Digest::MD5 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.30
-      Math::GMPz 0
-      Scalar::Util 0
-      base 0
-      strict 0
-      warnings 0
   Encode-Locale-1.05
     pathname: G/GA/GAAS/Encode-Locale-1.05.tar.gz
     provides:
@@ -2129,14 +2069,6 @@ DISTRIBUTIONS
       Math::BigInt 1.999819
       XSLoader 0.02
       perl 5.008
-  Math-GMPz-0.54
-    pathname: S/SI/SISYPHUS/Math-GMPz-0.54.tar.gz
-    provides:
-      Math::GMPz 0.54
-      Math::GMPz::Random 0.54
-      Math::GMPz::V 0.54
-    requirements:
-      ExtUtils::MakeMaker 0
   Math-Random-ISAAC-1.004
     pathname: J/JA/JAWNSY/Math-Random-ISAAC-1.004.tar.gz
     provides:
@@ -2146,16 +2078,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.31
       Test::More 0.62
       Test::NoWarnings 0.084
-  Math-Random-Secure-0.080001
-    pathname: F/FR/FREW/Math-Random-Secure-0.080001.tar.gz
-    provides:
-      Math::Random::Secure 0.080001
-      Math::Random::Secure::RNG 0.080001
-    requirements:
-      Crypt::Random::Source 0.07
-      ExtUtils::MakeMaker 0
-      Math::Random::ISAAC 1.001
-      Moo 2
   Mock-Sub-1.09
     pathname: S/ST/STEVEB/Mock-Sub-1.09.tar.gz
     provides:
