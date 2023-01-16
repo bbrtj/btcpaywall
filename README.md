@@ -1,3 +1,7 @@
+# OUTDATED!
+
+This software needs a redesign to work with newest bitcoin core due to introduction of descriptor wallets.
+
 # Bitcoin payment service
 
 ## What is it?
